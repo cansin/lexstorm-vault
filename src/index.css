@@ -8,6 +8,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+}
+
 a {
   font-weight: 500;
   text-decoration: inherit;
@@ -33,7 +42,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }

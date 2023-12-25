@@ -1,17 +1,26 @@
-import { Button } from "flowbite-react";
+import Navigation from "./Navigation/Navigation";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Header from "./Header/Header";
+import Content from "./Content/Content";
+import Footer from "./Footer/Footer";
+import theme from "./theme";
+import { Flowbite } from "flowbite-react";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <div className="flex flex-wrap gap-2">
-      <Button>Default</Button>
-      <Button color="blue">Blue</Button>
-      <Button color="gray">Gray</Button>
-      <Button color="dark">Dark</Button>
-      <Button color="light">Light</Button>
-      <Button color="success">Success</Button>
-      <Button color="failure">Failure</Button>
-      <Button color="warning">Warning</Button>
-      <Button color="purple">Purple</Button>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Flowbite theme={{ theme }}>
+        <div className="flex grow">
+          <Navigation />
+          <div className="flex grow flex-col">
+            <Header />
+            <Content />
+            <Footer />
+          </div>
+        </div>
+      </Flowbite>
+    </QueryClientProvider>
   );
 }
