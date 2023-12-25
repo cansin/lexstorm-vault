@@ -49,7 +49,7 @@ module.exports = {
     "node_modules/flowbite-react/lib/esm/**/*.js",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin"), require("flowbite-typography")],
   theme: {
     colors: paletteGenerator(colors),
     fontFamily: {

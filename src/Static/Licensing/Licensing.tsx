@@ -1,8 +1,8 @@
 export default function Licensing() {
   return (
-    <div className="container">
+    <>
       <h1>Licensing Information</h1>
-      <p>Last updated: [Date]</p>
+      <p>Last updated: Dec 26, 2023</p>
 
       <h2>General License Terms</h2>
       <p>
@@ -51,6 +51,6 @@ export default function Licensing() {
         For any inquiries regarding licensing or use of LexStorm Vault, please
         contact us at [Contact Information].
       </p>
-    </div>
+    </>
   );
 }

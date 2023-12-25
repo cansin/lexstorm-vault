@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
   return (
-    <div className="container">
+    <>
       <h1>Privacy Policy</h1>
       <p>Last updated: Dec 26, 2023</p>
 
@@ -60,6 +60,6 @@ export default function PrivacyPolicy() {
       <p>
         If you have any questions about this Privacy Policy, please contact us.
       </p>
-    </div>
+    </>
   );
 }

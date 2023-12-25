@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="container">
+    <>
       <h1>About LexStorm Vault</h1>
       <p className="lead">Revolutionizing Legal Document Management</p>
       <p>
@@ -39,6 +39,6 @@ export default function About() {
         and Collective has been instrumental in shaping the vision and execution
         of LexStorm Vault.
       </p>
-    </div>
+    </>
   );
 }
