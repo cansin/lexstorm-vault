@@ -10,12 +10,13 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
   ],
+  ignorePatterns: ['dist'],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: [".eslintrc.{js,cjs}", "*.config.js"],
       parserOptions: {
         sourceType: "script",
       },
