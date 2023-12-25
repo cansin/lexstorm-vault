@@ -19,7 +19,11 @@ export default function Navigation() {
   const { isLoading, isError, data, error } = useFolders();
 
   return (
-    <Sidebar theme={theme} className="border-r" aria-label="Navigation">
+    <Sidebar
+      theme={theme}
+      className="border-r shrink-0"
+      aria-label="Navigation"
+    >
       <Sidebar.Items className="flex flex-col h-full">
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={PiDatabaseBold}>
