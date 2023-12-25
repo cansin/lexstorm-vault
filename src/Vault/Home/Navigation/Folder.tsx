@@ -5,6 +5,7 @@ import {
   PiFolderMinusBold,
   PiFolderPlusBold,
 } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const indentations = {
   0: "pl-2",
@@ -16,12 +17,13 @@ const indentations = {
   6: "pl-28",
 };
 
-export default function Folder({ folder, indent }) {
+export default function Folder({ folder, indent, parent }) {
   if (!folder?.children.length) {
     return (
       <Sidebar.Item
         className={indentations[indent] ?? "pl-28"}
-        href="#"
+        as={Link}
+        to={`${parent}/${folder.name}`}
         icon={PiFolderBold}
       >
         {folder.name}
@@ -38,7 +40,12 @@ export default function Folder({ folder, indent }) {
       }
     >
       {folder.children.map((folder) => (
-        <Folder indent={indent + 1} key={folder.uuid} folder={folder} />
+        <Folder
+          indent={indent + 1}
+          parent={`${parent}/${folder.name}`}
+          key={folder.uuid}
+          folder={folder}
+        />
       ))}
     </Sidebar.Collapse>
   );

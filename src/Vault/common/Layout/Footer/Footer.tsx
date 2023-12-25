@@ -6,7 +6,8 @@ export default function FooterContent() {
     <Footer className="border-0">
       <Footer.Copyright
         className="w-64 p-6 bg-gray-50 h-full border-r"
-        href="#"
+        as={Link}
+        to="/about"
         by="LexStorm Vault™"
         year={2023}
       />

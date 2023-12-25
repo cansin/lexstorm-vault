@@ -2,6 +2,7 @@ import { Sidebar, Spinner, type CustomFlowbiteTheme } from "flowbite-react";
 import { PiDatabaseBold, PiTrashBold } from "react-icons/pi";
 import Folder from "./Folder";
 import useFolders from "./useFolders";
+import { Link } from "react-router-dom";
 
 const theme: CustomFlowbiteTheme["sidebar"] = {
   item: {
@@ -26,10 +27,10 @@ export default function Navigation() {
     >
       <Sidebar.Items className="flex flex-col h-full">
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={PiDatabaseBold}>
+          <Sidebar.Item as={Link} to="/vault/all-files" icon={PiDatabaseBold}>
             All files
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={PiTrashBold}>
+          <Sidebar.Item as={Link} to="/vault/deleted-files" icon={PiTrashBold}>
             Deleted files
           </Sidebar.Item>
         </Sidebar.ItemGroup>
@@ -44,6 +45,7 @@ export default function Navigation() {
             <Folder
               indent={0}
               folder={{ name: "Folders", children: data.items }}
+              parent="/vault"
             />
           )}
           {!isLoading && isError && <Sidebar.CTA>{error}</Sidebar.CTA>}
