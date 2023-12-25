@@ -12,9 +12,9 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Flowbite theme={{ theme }}>
-        <div className="flex grow flex-col">
+        <div className="flex grow flex-col overflow-y-hidden">
           <Header />
-          <div className="flex grow">
+          <div className="flex grow overflow-y-auto">
             <Navigation />
             <Content />
           </div>
