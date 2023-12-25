@@ -1,30 +1,35 @@
-import { Sidebar, Spinner } from "flowbite-react";
-import { HiOutlineTrash, HiOutlineDatabase } from "react-icons/hi";
+import { Sidebar, Spinner, type CustomFlowbiteTheme } from "flowbite-react";
+import { PiDatabaseBold, PiTrashBold } from "react-icons/pi";
 import Folder from "./Folder";
 import useFolders from "./useFolders";
+
+const theme: CustomFlowbiteTheme["sidebar"] = {
+  item: {
+    content: { base: "px-3 flex-1 whitespace-nowrap truncate" },
+    icon: { base: "" },
+  },
+  collapse: {
+    label: {
+      base: "ml-3 flex-1 whitespace-nowrap text-left truncate",
+    },
+  },
+};
 
 export default function Navigation() {
   const { isLoading, isError, data, error } = useFolders();
 
   return (
-    <Sidebar aria-label="Sidebar with logo branding example">
-      <Sidebar.Logo
-        href="#"
-        img="/lexstorm-vault.svg"
-        imgAlt="LexStorm Vault logo"
-      >
-        <span className="font-extrabold font-serif">LexStorm Vault</span>
-      </Sidebar.Logo>
-      <Sidebar.Items>
+    <Sidebar theme={theme} className="border-r" aria-label="Navigation">
+      <Sidebar.Items className="flex flex-col h-full">
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiOutlineDatabase}>
+          <Sidebar.Item href="#" icon={PiDatabaseBold}>
             All files
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineTrash}>
+          <Sidebar.Item href="#" icon={PiTrashBold}>
             Deleted files
           </Sidebar.Item>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup>
+        <Sidebar.ItemGroup className="grow overflow-y-auto">
           {isLoading && (
             <Spinner
               aria-label="Loading folders...."
@@ -32,11 +37,10 @@ export default function Navigation() {
             />
           )}
           {!isLoading && !isError && (
-            <Sidebar.Collapse label="Folders">
-              {data?.items.map((folder) => (
-                <Folder key={folder.uuid} folder={folder} />
-              ))}
-            </Sidebar.Collapse>
+            <Folder
+              indent={0}
+              folder={{ name: "Folders", children: data.items }}
+            />
           )}
           {!isLoading && isError && <Sidebar.CTA>{error}</Sidebar.CTA>}
         </Sidebar.ItemGroup>

@@ -9,7 +9,7 @@ export default function UserDropdown() {
     if (!isLoading && isError) {
       logout();
     }
-  }, [isLoading, isError]);
+  }, [isLoading, isError, logout]);
 
   return (
     <div className="flex md:order-2">

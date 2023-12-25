@@ -1,16 +1,18 @@
 import { TextInput } from "flowbite-react";
-import { HiSearch } from "react-icons/hi";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 export default function SearchForm() {
   return (
-    <form className="w-2/4">
-      <TextInput
-        id="search"
-        type="search"
-        icon={HiSearch}
-        placeholder="Search"
-        required
-      />
-    </form>
+    <div className="grow px-4">
+      <form className="w-2/4">
+        <TextInput
+          id="search"
+          type="search"
+          icon={PiMagnifyingGlassBold}
+          placeholder="Search"
+          required
+        />
+      </form>
+    </div>
   );
 }

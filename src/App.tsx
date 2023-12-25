@@ -12,13 +12,13 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Flowbite theme={{ theme }}>
-        <div className="flex grow">
-          <Navigation />
-          <div className="flex grow flex-col">
-            <Header />
+        <div className="flex grow flex-col">
+          <Header />
+          <div className="flex grow">
+            <Navigation />
             <Content />
-            <Footer />
           </div>
+          <Footer />
         </div>
       </Flowbite>
     </QueryClientProvider>
