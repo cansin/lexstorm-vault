@@ -4,9 +4,12 @@ import { twMerge } from "tailwind-merge";
 
 export default function CommonFooter({ copyrightClassName }) {
   return (
-    <Footer className="border-0">
+    <Footer className="border-0 flex">
       <Footer.Copyright
-        className={twMerge("w-64 p-6 h-full border-t", copyrightClassName)}
+        className={twMerge(
+          "w-64 p-6 h-full border-t hidden sm:block",
+          copyrightClassName,
+        )}
         as={Link}
         to="/about"
         by="LexStorm Vault™"

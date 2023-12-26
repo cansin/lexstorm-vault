@@ -6,7 +6,7 @@ export default function Brand({ className }) {
     <Navbar.Brand as={Link} to="/" className={className}>
       <img
         src="/lexstorm-vault.svg"
-        className="mr-3 h-6 sm:h-9"
+        className="mr-3 h-6 h-9"
         alt="LexStorm Vault"
       />
       <span className="self-center whitespace-nowrap font-extrabold font-serif dark:text-white">
