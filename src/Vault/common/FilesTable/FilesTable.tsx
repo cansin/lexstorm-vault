@@ -4,7 +4,7 @@ import File from "./File";
 
 export default function FilesTable({ files }) {
   return (
-    <Table hoverable striped>
+    <Table striped>
       <Table.Head>
         <Table.HeadCell>Name</Table.HeadCell>
         <Table.HeadCell>Parent Folder</Table.HeadCell>
