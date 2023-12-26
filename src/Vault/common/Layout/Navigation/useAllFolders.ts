@@ -74,7 +74,7 @@ const mockResponse = {
   ],
 };
 
-function fetchFolders() {
+function fetchAllFolders() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(mockResponse);
@@ -82,7 +82,10 @@ function fetchFolders() {
   });
 }
 
-export default function useFolders() {
-  const query = useQuery({ queryKey: ["folders"], queryFn: fetchFolders });
+export default function useAllFolders() {
+  const query = useQuery({
+    queryKey: ["all-folders"],
+    queryFn: fetchAllFolders,
+  });
   return { ...query };
 }

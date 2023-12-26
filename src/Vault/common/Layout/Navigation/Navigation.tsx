@@ -3,7 +3,7 @@ import { PiDatabaseBold, PiTrashBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 import Folder from "./Folder";
-import useFolders from "./useFolders";
+import useAllFolders from "./useAllFolders";
 
 const theme: CustomFlowbiteTheme["sidebar"] = {
   item: {
@@ -18,7 +18,7 @@ const theme: CustomFlowbiteTheme["sidebar"] = {
 };
 
 export default function Navigation() {
-  const { isLoading, isError, data, error } = useFolders();
+  const { isLoading, isError, data, error } = useAllFolders();
 
   return (
     <Sidebar
@@ -42,6 +42,7 @@ export default function Navigation() {
               className="block mx-auto"
             />
           )}
+
           {!isLoading && !isError && (
             <Folder
               indent={0}
@@ -49,6 +50,7 @@ export default function Navigation() {
               parent="/vault"
             />
           )}
+
           {!isLoading && isError && <Sidebar.CTA>{error}</Sidebar.CTA>}
         </Sidebar.ItemGroup>
       </Sidebar.Items>

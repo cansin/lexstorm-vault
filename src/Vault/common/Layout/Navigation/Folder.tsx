@@ -7,6 +7,8 @@ import {
 } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
+import type FolderInterface from "./Folder.interface";
+
 const indentations = {
   0: "pl-2",
   1: "pl-6",
@@ -17,7 +19,15 @@ const indentations = {
   6: "pl-28",
 };
 
-export default function Folder({ folder, indent, parent }) {
+export default function Folder({
+  folder,
+  indent,
+  parent,
+}: {
+  folder: FolderInterface;
+  indent: number;
+  parent: string;
+}) {
   if (!folder?.children.length) {
     return (
       <Sidebar.Item
