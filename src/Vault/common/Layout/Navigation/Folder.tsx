@@ -1,10 +1,6 @@
 import { Sidebar } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
-import {
-  PiFolderBold,
-  PiFolderMinusBold,
-  PiFolderPlusBold,
-} from "react-icons/pi";
+import { PiFolder, PiFolderMinus, PiFolderPlus } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 const indentations = {
@@ -26,7 +22,7 @@ export default function Folder({ folder, indent, parent }) {
         className={indentations[indent] ?? "pl-28"}
         as={Link}
         to={`/vault/${path}`}
-        icon={PiFolderBold}
+        icon={PiFolder}
       >
         {folder.name}
       </Sidebar.Item>
@@ -38,7 +34,7 @@ export default function Folder({ folder, indent, parent }) {
       className={twMerge(indentations[indent] ?? "pl-28", "flex-row-reverse")}
       label={folder.name ?? "Folders"}
       renderChevronIcon={(theme, open) =>
-        open ? <PiFolderMinusBold /> : <PiFolderPlusBold />
+        open ? <PiFolderMinus /> : <PiFolderPlus />
       }
     >
       {folder.children.map((child) => (

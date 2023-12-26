@@ -10,7 +10,7 @@ export default function FilesTable({ files }) {
         <Table.HeadCell>Parent Folder</Table.HeadCell>
         <Table.HeadCell>Modified</Table.HeadCell>
         <Table.HeadCell>
-          <span className="sr-only">Edit</span>
+          <span className="sr-only">Actions</span>
         </Table.HeadCell>
       </Table.Head>
       <Table.Body className="divide-y">

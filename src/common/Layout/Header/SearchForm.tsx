@@ -1,5 +1,5 @@
 import { TextInput } from "flowbite-react";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { PiMagnifyingGlass } from "react-icons/pi";
 
 export default function SearchForm() {
   return (
@@ -8,7 +8,7 @@ export default function SearchForm() {
         <TextInput
           id="search"
           type="search"
-          icon={PiMagnifyingGlassBold}
+          icon={PiMagnifyingGlass}
           placeholder="Search"
           required
         />

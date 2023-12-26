@@ -1,5 +1,5 @@
 import { Sidebar, Spinner, type CustomFlowbiteTheme } from "flowbite-react";
-import { PiDatabaseBold, PiTrashBold } from "react-icons/pi";
+import { PiDatabase, PiTrash } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
@@ -29,10 +29,10 @@ export default function Navigation({ className }) {
     >
       <Sidebar.Items className="flex flex-col h-full">
         <Sidebar.ItemGroup>
-          <Sidebar.Item as={Link} to="/vault/all-files" icon={PiDatabaseBold}>
+          <Sidebar.Item as={Link} to="/vault/all-files" icon={PiDatabase}>
             All files
           </Sidebar.Item>
-          <Sidebar.Item as={Link} to="/vault/deleted-files" icon={PiTrashBold}>
+          <Sidebar.Item as={Link} to="/vault/deleted-files" icon={PiTrash}>
             Deleted files
           </Sidebar.Item>
         </Sidebar.ItemGroup>

@@ -1,5 +1,5 @@
 import { Button, Modal } from "flowbite-react";
-import { PiUploadSimpleBold } from "react-icons/pi";
+import { PiUploadSimple } from "react-icons/pi";
 
 import FilePicker from "./FilePicker";
 import useFilePicker from "./useFilePicker";
@@ -11,7 +11,7 @@ export default function UploadFileButton() {
   return (
     <>
       <Button pill color="success" size="xl" onClick={toggleFilePicker}>
-        <PiUploadSimpleBold className="mr-2 h-5 w-5" />
+        <PiUploadSimple className="mr-2 h-5 w-5" />
         Upload File
       </Button>
       <Modal show={showFilePicker} onClose={toggleFilePicker}>
