@@ -1,8 +1,9 @@
 import { Navbar } from "flowbite-react";
+import { twMerge } from "tailwind-merge";
+
 import UserDropdown from "./UserDropdown";
 import SearchForm from "./SearchForm";
 import Brand from "./Brand";
-import { twMerge } from "tailwind-merge";
 
 export default function CommonHeader({ brandClassName }) {
   return (

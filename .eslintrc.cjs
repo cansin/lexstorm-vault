@@ -8,9 +8,11 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "plugin:prettier/recommended",
   ],
-  ignorePatterns: ['dist'],
+  ignorePatterns: ["dist"],
   overrides: [
     {
       env: {
@@ -23,5 +25,21 @@ module.exports = {
     },
   ],
   parser: "@typescript-eslint/parser",
-  plugins: ["react"],
+  plugins: ["react", "html"],
+  rules: {
+    "import/order": ["error", { "newlines-between": "always" }],
+  },
+  settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
+    },
+    "import/resolver": {
+      typescript: {
+        extensions: [".ts", ".tsx"],
+      },
+      node: {
+        extensions: [".cjs", ".js", ".jsx"],
+      },
+    },
+  },
 };

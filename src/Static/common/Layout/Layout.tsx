@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+
 import CommonLayout from "../../../common/Layout/Layout";
 
 export default function Layout() {

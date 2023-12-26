@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
+
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
-import { ScrollRestoration } from "react-router-dom";
 
 export default function CommonLayout({ footer, header, outlet }) {
   return (

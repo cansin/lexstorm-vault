@@ -1,8 +1,9 @@
 import { Sidebar, Spinner, type CustomFlowbiteTheme } from "flowbite-react";
 import { PiDatabaseBold, PiTrashBold } from "react-icons/pi";
+import { Link } from "react-router-dom";
+
 import Folder from "./Folder";
 import useFolders from "./useFolders";
-import { Link } from "react-router-dom";
 
 const theme: CustomFlowbiteTheme["sidebar"] = {
   item: {

@@ -1,6 +1,7 @@
 import { Avatar, Dropdown } from "flowbite-react";
-import useMe from "./useMe";
 import { useEffect } from "react";
+
+import useMe from "./useMe";
 
 export default function UserDropdown() {
   const { isLoading, isError, data: user, logout } = useMe();
