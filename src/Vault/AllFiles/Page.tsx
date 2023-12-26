@@ -10,7 +10,7 @@ export default function AllFilesPage() {
 
   return (
     <div className="p-1 m-3 grow overflow-auto">
-      {!isLoading && isError && error}
+      {!isLoading && isError && <div>{error}</div>}
 
       {isLoading && (
         <Spinner aria-label="Loading folders...." className="block mx-auto" />

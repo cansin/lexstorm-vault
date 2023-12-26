@@ -9,7 +9,7 @@ export default function FilePage({ parent, name }) {
 
   return (
     <>
-      {!isLoading && isError && error}
+      {!isLoading && isError && <div>{error}</div>}
 
       {isLoading && (
         <Spinner aria-label="Loading file...." className="block mx-auto" />

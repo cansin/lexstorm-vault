@@ -5,7 +5,7 @@ import "./FilePicker.css";
 export default function FilePicker({ onUploadDone }) {
   return (
     <PickerInline
-      apikey={import.meta.env.VITE_FILESTACK_APIKEY}
+      apikey={import.meta.env.VITE_FILESTACK_API_KEY}
       onUploadDone={onUploadDone}
       pickerOptions={{
         accept: ["application/pdf"],

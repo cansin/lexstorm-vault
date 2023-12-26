@@ -15,7 +15,7 @@ export default function FolderPage({ parent, name }) {
 
   return (
     <div className="p-1 m-3 grow overflow-auto">
-      {!isLoading && isError && error}
+      {!isLoading && isError && <div>{error}</div>}
 
       {isLoading && (
         <Spinner aria-label="Loading folders...." className="block mx-auto" />
@@ -24,7 +24,7 @@ export default function FolderPage({ parent, name }) {
       {!isLoading && !isError && (
         <>
           <FolderBreadcrumb folder={folder} />
-          <FilesTable files={folder.children} />
+          <FilesTable files={folder.children} showParents={false} />
         </>
       )}
     </div>
