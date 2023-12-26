@@ -1,5 +1,5 @@
-import Layout from "./common/Layout/Layout";
 import Home from "./Home/Home";
+import Layout from "./common/Layout/Layout";
 
 export default function getVaultRoutes() {
   return {
