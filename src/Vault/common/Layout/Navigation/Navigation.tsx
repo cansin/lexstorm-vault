@@ -45,11 +45,7 @@ export default function Navigation({ className }) {
           )}
 
           {!isLoading && !isError && (
-            <Folder
-              indent={0}
-              folder={{ name: "Folders", children: data.items }}
-              parent="/vault"
-            />
+            <Folder indent={0} folder={{ children: data.items }} />
           )}
 
           {!isLoading && isError && <Sidebar.CTA>{error}</Sidebar.CTA>}

@@ -7,8 +7,6 @@ import {
 } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-import type FolderInterface from "./Folder.interface";
-
 const indentations = {
   0: "pl-2",
   1: "pl-6",
@@ -19,21 +17,15 @@ const indentations = {
   6: "pl-28",
 };
 
-export default function Folder({
-  folder,
-  indent,
-  parent,
-}: {
-  folder: FolderInterface;
-  indent: number;
-  parent: string;
-}) {
+export default function Folder({ folder, indent, parent }) {
+  const path = [parent, folder.name].filter((e) => e).join("/");
+
   if (!folder?.children.length) {
     return (
       <Sidebar.Item
         className={indentations[indent] ?? "pl-28"}
         as={Link}
-        to={`${parent}/${folder.name}`}
+        to={`/vault/${path}`}
         icon={PiFolderBold}
       >
         {folder.name}
@@ -44,17 +36,17 @@ export default function Folder({
   return (
     <Sidebar.Collapse
       className={twMerge(indentations[indent] ?? "pl-28", "flex-row-reverse")}
-      label={folder.name}
+      label={folder.name ?? "Folders"}
       renderChevronIcon={(theme, open) =>
         open ? <PiFolderMinusBold /> : <PiFolderPlusBold />
       }
     >
-      {folder.children.map((folder) => (
+      {folder.children.map((child) => (
         <Folder
           indent={indent + 1}
-          parent={`${parent}/${folder.name}`}
-          key={folder.uuid}
-          folder={folder}
+          parent={`${path}`}
+          key={child.uuid}
+          folder={child}
         />
       ))}
     </Sidebar.Collapse>
