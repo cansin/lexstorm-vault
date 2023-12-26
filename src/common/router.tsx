@@ -8,8 +8,8 @@ export default createBrowserRouter([
   {
     path: "/",
     children: [
-      getStaticRoutes(),
-      getVaultRoutes(),
+      ...getStaticRoutes(),
+      ...getVaultRoutes(),
       { path: "*", element: <FourOhFourPage /> },
     ],
   },

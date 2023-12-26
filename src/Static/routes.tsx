@@ -5,25 +5,27 @@ import ContactPage from "./Contact/Page";
 import Layout from "./common/Layout/Layout";
 
 export default function getStaticRoutes() {
-  return {
-    element: <Layout />,
-    children: [
-      {
-        path: "about",
-        element: <AboutPage />,
-      },
-      {
-        path: "privacy-policy",
-        element: <PrivacyPolicyPage />,
-      },
-      {
-        path: "licensing",
-        element: <LicensingPage />,
-      },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      },
-    ],
-  };
+  return [
+    {
+      element: <Layout />,
+      children: [
+        {
+          path: "about",
+          element: <AboutPage />,
+        },
+        {
+          path: "privacy-policy",
+          element: <PrivacyPolicyPage />,
+        },
+        {
+          path: "licensing",
+          element: <LicensingPage />,
+        },
+        {
+          path: "contact",
+          element: <ContactPage />,
+        },
+      ],
+    },
+  ];
 }
