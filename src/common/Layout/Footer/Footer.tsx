@@ -1,11 +1,12 @@
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
-export default function FooterContent() {
+export default function CommonFooter({ copyrightClassName }) {
   return (
     <Footer className="border-0">
       <Footer.Copyright
-        className="w-64 p-6 bg-gray-50 h-full border-r"
+        className={twMerge("w-64 p-6 h-full border-t", copyrightClassName)}
         as={Link}
         to="/about"
         by="LexStorm Vault™"

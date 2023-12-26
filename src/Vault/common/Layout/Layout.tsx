@@ -1,15 +1,12 @@
-import { Outlet } from "react-router-dom";
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
+import CommonLayout from "../../../common/Layout/Layout";
+import CommonFooter from "../../../common/Layout/Footer/Footer";
+import CommonHeader from "../../../common/Layout/Header/Header";
 
 export default function Layout() {
   return (
-    <div className="flex grow flex-col overflow-y-hidden">
-      <Header />
-      <div className="flex grow overflow-y-auto">
-        <Outlet />
-      </div>
-      <Footer />
-    </div>
+    <CommonLayout
+      footer={<CommonFooter copyrightClassName="bg-gray-50 border-r" />}
+      header={<CommonHeader brandClassName="bg-gray-50 border-r" />}
+    />
   );
 }
