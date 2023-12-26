@@ -11,12 +11,26 @@ export default function File({ file }) {
         <Link to={`/vault/${file.parent}/${file.name}`}>{file.name}</Link>
       </Table.Cell>
       <Table.Cell>/{file.parent}</Table.Cell>
-      <Table.Cell>{new Date(file.modified).toDateString()}</Table.Cell>
+      <Table.Cell className="text-nowrap">
+        {new Date(file.modified).toDateString()}
+      </Table.Cell>
       <Table.Cell>
         <div className="flex flex-row gap-1 invisible text-right group-hover:visible">
-          <ActionButton label="Rename" Icon={PiTextbox} />
-          <ActionButton label="Move" Icon={PiArrowsOut} />
-          <ActionButton label="Delete" Icon={PiTrash} />
+          <ActionButton
+            label="Rename"
+            Icon={PiTextbox}
+            onClick={() => console.log("will rename!")}
+          />
+          <ActionButton
+            label="Move"
+            Icon={PiArrowsOut}
+            onClick={() => console.log("will move!")}
+          />
+          <ActionButton
+            label="Delete"
+            Icon={PiTrash}
+            onClick={() => console.log("will delete!")}
+          />
         </div>
       </Table.Cell>
     </Table.Row>
