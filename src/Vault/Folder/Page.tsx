@@ -2,11 +2,16 @@ import { Spinner } from "flowbite-react";
 
 import FilesTable from "../common/FilesTable/FilesTable";
 
-import useAllFiles from "./useAllFiles";
-import AllFilesBreadcrumb from "./Breadcrumb";
+import useFolder from "./useFolder";
+import FolderBreadcrumb from "./Breadcrumb";
 
-export default function AllFilesPage() {
-  const { isLoading, isError, data, error } = useAllFiles();
+export default function FolderPage({ parent, name }) {
+  const {
+    isLoading,
+    isError,
+    data: folder,
+    error,
+  } = useFolder({ parent, name });
 
   return (
     <div className="p-1 m-3 grow overflow-auto">
@@ -18,8 +23,8 @@ export default function AllFilesPage() {
 
       {!isLoading && !isError && (
         <>
-          <AllFilesBreadcrumb />
-          <FilesTable files={data.items} />
+          <FolderBreadcrumb folder={folder} />
+          <FilesTable files={folder.children} />
         </>
       )}
     </div>

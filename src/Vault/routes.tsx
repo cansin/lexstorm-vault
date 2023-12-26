@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import FourOhFourPage from "../FourOhFour/Page";
 
 import AllFilesPage from "./AllFiles/Page";
-import FilePage from "./File/Page";
 import Layout from "./common/Layout/Layout";
+import FileOrFolderPage from "./FileOrFolder/Page";
 
 export default function getVaultRoutes() {
   return [
@@ -40,7 +40,7 @@ export default function getVaultRoutes() {
     },
     {
       path: "vault/*",
-      element: <FilePage />,
+      element: <FileOrFolderPage />,
     },
   ];
 }

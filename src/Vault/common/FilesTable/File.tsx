@@ -8,10 +8,10 @@ export default function File({ file }) {
         <Link to={`/vault/${file.parent}/${file.name}`}>{file.name}</Link>
       </Table.Cell>
       <Table.Cell>/{file.parent}</Table.Cell>
-      <Table.Cell>{new Date(file.modified).toLocaleDateString()}</Table.Cell>
+      <Table.Cell>{new Date(file.modified).toDateString()}</Table.Cell>
       <Table.Cell>
         <a
-          href="#"
+          href="src/Vault/common/FilesTable/File#"
           className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
         >
           Edit

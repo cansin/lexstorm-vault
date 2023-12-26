@@ -1,19 +1,26 @@
+import { Spinner } from "flowbite-react";
+
 import FileHeader from "./Header";
 import FileViewer from "./Viewer";
+import useFile from "./useFile";
 
-export default function FilePage() {
-  const file = {
-    uuid: crypto.randomUUID(),
-    name: "Board Meeting Summary Jan 2023.pdf",
-    src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-    modified: "2023-01-08",
-    parent: "Internal Documents/Meeting Minutes/Board Meetings/2023",
-  };
+export default function FilePage({ parent, name }) {
+  const { isLoading, isError, data: file, error } = useFile({ parent, name });
 
   return (
-    <div className="grow overflow-y-auto">
-      <FileHeader file={file} />
-      <FileViewer file={file} />
-    </div>
+    <>
+      {!isLoading && isError && error}
+
+      {isLoading && (
+        <Spinner aria-label="Loading file...." className="block mx-auto" />
+      )}
+
+      {!isLoading && !isError && (
+        <div className="grow overflow-y-auto">
+          <FileHeader file={file} />
+          <FileViewer file={file} />
+        </div>
+      )}
+    </>
   );
 }

@@ -7,7 +7,7 @@ import ActionButtons from "../Actions/Actions";
 
 import Navigation from "./Navigation/Navigation";
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
     <CommonLayout
       footer={<CommonFooter copyrightClassName="bg-gray-50 border-r" />}
@@ -17,7 +17,7 @@ export default function Layout() {
           <Navigation className="hidden md:block" />
           <div className="flex flex-col grow overflow-hidden">
             <ActionButtons />
-            <Outlet />
+            {children ?? <Outlet />}
           </div>
         </>
       }
