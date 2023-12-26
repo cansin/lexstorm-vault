@@ -12,4 +12,10 @@ export default defineConfig({
       typescript: true,
     }),
   ],
+  server: {
+    https: {
+      key: fs.readFileSync("./.cert/key.pem"),
+      cert: fs.readFileSync("./.cert/cert.pem"),
+    },
+  },
 });

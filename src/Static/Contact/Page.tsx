@@ -1,6 +1,6 @@
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <>
       <h1>Contact Us</h1>

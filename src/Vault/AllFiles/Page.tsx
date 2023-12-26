@@ -1,8 +1,8 @@
 import FilesTable from "./FilesTable";
 
-export default function AllFiles() {
+export default function AllFilesPage() {
   return (
-    <div className="p-4 grow overflow-y-auto">
+    <div className="p-1 m-3 grow overflow-auto">
       <FilesTable />
     </div>
   );

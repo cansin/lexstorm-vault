@@ -1,7 +1,7 @@
-import About from "./About/About";
-import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
-import Licensing from "./Licensing/Licensing";
-import Contact from "./Contact/Contact";
+import AboutPage from "./About/Page";
+import PrivacyPolicyPage from "./PrivacyPolicy/Page";
+import LicensingPage from "./Licensing/Page";
+import ContactPage from "./Contact/Page";
 import Layout from "./common/Layout/Layout";
 
 export default function getStaticRoutes() {
@@ -10,19 +10,19 @@ export default function getStaticRoutes() {
     children: [
       {
         path: "about",
-        element: <About />,
+        element: <AboutPage />,
       },
       {
         path: "privacy-policy",
-        element: <PrivacyPolicy />,
+        element: <PrivacyPolicyPage />,
       },
       {
         path: "licensing",
-        element: <Licensing />,
+        element: <LicensingPage />,
       },
       {
         path: "contact",
-        element: <Contact />,
+        element: <ContactPage />,
       },
     ],
   };

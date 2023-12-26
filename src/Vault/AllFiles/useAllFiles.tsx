@@ -68,7 +68,7 @@ const mockResponse = {
     {
       uuid: crypto.randomUUID(),
       name: "2023 HR Handbook.pdf",
-      url: "https://www.learningcontainer.com/wp-content/uploads/2019/09/sample-pdf-file.pdf",
+      url: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       modified: "2023-02-15",
       parent: "Internal Documents/HR Policies/Employee Handbook",
     },

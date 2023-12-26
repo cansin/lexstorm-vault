@@ -1,6 +1,7 @@
 import { Sidebar, Spinner, type CustomFlowbiteTheme } from "flowbite-react";
 import { PiDatabaseBold, PiTrashBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 import Folder from "./Folder";
 import useAllFolders from "./useAllFolders";
@@ -17,13 +18,13 @@ const theme: CustomFlowbiteTheme["sidebar"] = {
   },
 };
 
-export default function Navigation() {
+export default function Navigation({ className }) {
   const { isLoading, isError, data, error } = useAllFolders();
 
   return (
     <Sidebar
+      className={twMerge(className, "border-r shrink-0")}
       theme={theme}
-      className="border-r shrink-0"
       aria-label="Navigation"
     >
       <Sidebar.Items className="flex flex-col h-full">

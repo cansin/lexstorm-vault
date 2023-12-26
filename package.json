@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.14.6",
+    "filestack-react": "^5.0.0",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
     "react": "^18.2.0",

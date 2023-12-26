@@ -1,4 +1,4 @@
-export default function Licensing() {
+export default function LicensingPage() {
   return (
     <>
       <h1>Licensing Information</h1>

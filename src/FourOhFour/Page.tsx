@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function FourOhFour() {
+export default function FourOhFourPage() {
   return (
     <main className="px-12 py-8 mx-auto max-w-7xl">
       <div className="format dark:format-invert max-w-full pb-8">

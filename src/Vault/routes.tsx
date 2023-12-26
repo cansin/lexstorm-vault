@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
 
-import FourOhFour from "../FourOhFour/FourOhFour";
+import FourOhFourPage from "../FourOhFour/Page";
 
-import AllFiles from "./AllFiles/AllFiles";
+import AllFilesPage from "./AllFiles/Page";
+import FilePage from "./File/Page";
 import Layout from "./common/Layout/Layout";
 
 export default function getVaultRoutes() {
@@ -22,19 +23,19 @@ export default function getVaultRoutes() {
           },
           {
             path: "new-folder",
-            element: <FourOhFour />,
+            element: <FourOhFourPage />,
           },
           {
             path: "all-files",
-            element: <AllFiles />,
+            element: <AllFilesPage />,
           },
           {
             path: "deleted-files",
-            element: <FourOhFour />,
+            element: <FourOhFourPage />,
           },
           {
-            path: ":path",
-            element: <FourOhFour />,
+            path: "*",
+            element: <FilePage />,
           },
         ],
       },
