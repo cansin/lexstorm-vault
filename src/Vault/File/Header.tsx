@@ -1,6 +1,6 @@
 import { Button, Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { PiX } from "react-icons/pi";
+import { PiArrowsOut, PiInfo, PiTrash, PiX, PiTextbox } from "react-icons/pi";
 
 import FileBreadcrumb from "./Breadcrumb";
 
@@ -21,8 +21,18 @@ export default function FileHeader({ file }) {
           pill
           color="gray"
           size="sm"
+          onClick={() => console.log("Will rename!")}
+        >
+          <PiTextbox className="mr-1 h-4 w-4" />
+          Rename
+        </Button>
+        <Button
+          pill
+          color="gray"
+          size="sm"
           onClick={() => console.log("Will move!")}
         >
+          <PiArrowsOut className="mr-1 h-4 w-4" />
           Move
         </Button>
         <Button
@@ -31,15 +41,8 @@ export default function FileHeader({ file }) {
           size="sm"
           onClick={() => console.log("Will delete!")}
         >
+          <PiTrash className="mr-1 h-4 w-4" />
           Delete
-        </Button>
-        <Button
-          pill
-          color="gray"
-          size="sm"
-          onClick={() => console.log("Will rename!")}
-        >
-          Rename
         </Button>
         <Button
           pill
@@ -47,7 +50,7 @@ export default function FileHeader({ file }) {
           size="sm"
           onClick={() => console.log("Will show info!")}
         >
-          Info
+          <PiInfo />
         </Button>
       </div>
     </Navbar>
