@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 
 import FourOhFourPage from "../FourOhFour/Page";
 
-import AllFilesPage from "./AllFiles/Page";
+import VaultPage from "./Vault/Page";
 import Layout from "./common/Layout/Layout";
 import FolderPage from "./Folder/Page";
 import FilePage from "./File/Page";
@@ -29,11 +29,15 @@ export default function getVaultRoutes() {
             },
             {
               path: "all-files",
-              element: <AllFilesPage />,
+              element: (
+                <VaultPage label="All" filter={(file) => !file.deleted} />
+              ),
             },
             {
               path: "deleted-files",
-              element: <FourOhFourPage />,
+              element: (
+                <VaultPage label="Deleted" filter={(file) => file.deleted} />
+              ),
             },
             {
               path: "folder/*",

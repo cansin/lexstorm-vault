@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ref, set } from "firebase/database";
+import { ref, serverTimestamp, update } from "firebase/database";
 
-import { queryKeyFn as allFilesQueryKeyFn } from "../../../../AllFiles/useAllFiles";
+import { queryKeyFn as allFilesQueryKeyFn } from "../../../../Vault/useAllFiles";
 import { queryKeyFn as folderQueryKeyFn } from "../../../../Folder/useFolder";
 import { database } from "../../../../../common/firebase";
 
@@ -9,7 +9,7 @@ export const useDeleteFile = ({ file: { parent, uuid } }) => {
   const client = useQueryClient();
   const { mutateAsync: deleteFile, ...rest } = useMutation({
     mutationFn() {
-      set(ref(database, `files/${uuid}`), { deleted: new Date() });
+      update(ref(database, `files/${uuid}`), { deleted: serverTimestamp() });
     },
     onSuccess() {
       client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });

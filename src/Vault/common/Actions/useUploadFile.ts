@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { database } from "../../../common/firebase";
 import { queryKeyFn as allFoldersQueryKeyFn } from "../Layout/Navigation/useAllFolders";
-import { queryKeyFn as allFilesQueryKeyFn } from "../../AllFiles/useAllFiles";
+import { queryKeyFn as allFilesQueryKeyFn } from "../../Vault/useAllFiles";
 
 export default function useUploadFile() {
   const [showFilePickerModal, setShowFilePickerModal] = useState(false);
@@ -14,7 +14,7 @@ export default function useUploadFile() {
       push(ref(database, "files"), {
         ...values,
         parent: "",
-        modified: serverTimestamp(),
+        created: serverTimestamp(),
         deleted: "",
       });
     },

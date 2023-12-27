@@ -1,15 +1,15 @@
 import { Table } from "flowbite-react";
 
-import MoveButton from "./Button/Move";
+import DeleteButton from "./Button/Delete";
 
-export default function ParentFolderCell({ file }) {
+export default function CreatedCell({ file }) {
   return (
-    <Table.Cell className="hidden xl:table-cell">
+    <Table.Cell className="hidden lg:table-cell">
       <div className="flex flex-row items-center gap-2">
-        /{file.parent}
+        {file.created && new Date(file.created).toDateString()}
         {!file.deleted && (
           <div className="invisible group-hover:visible">
-            <MoveButton file={file} />
+            <DeleteButton file={file} />
           </div>
         )}
       </div>

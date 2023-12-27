@@ -3,9 +3,9 @@ import { Spinner } from "flowbite-react";
 import FilesTable from "../common/FilesTable/FilesTable";
 
 import useAllFiles from "./useAllFiles";
-import AllFilesBreadcrumb from "./Breadcrumb";
+import VaultBreadcrumb from "./Breadcrumb";
 
-export default function AllFilesPage() {
+export default function VaultPage({ label, filter }) {
   const { isLoading, isError, files, error } = useAllFiles();
 
   return (
@@ -13,13 +13,13 @@ export default function AllFilesPage() {
       {!isLoading && isError && <div>{error}</div>}
 
       {isLoading && (
-        <Spinner aria-label="Loading folders...." className="block mx-auto" />
+        <Spinner aria-label="Loading files...." className="block mx-auto" />
       )}
 
       {!isLoading && !isError && (
         <>
-          <AllFilesBreadcrumb />
-          <FilesTable files={files} />
+          <VaultBreadcrumb label={label} />
+          <FilesTable files={files} filter={filter} />
         </>
       )}
     </div>
