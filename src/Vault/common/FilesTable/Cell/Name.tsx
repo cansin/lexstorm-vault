@@ -10,7 +10,9 @@ export default function NameCell({ file, hideMoveButton }) {
   return (
     <Table.Cell className="whitespace-nowrap font-medium text-gray-900">
       <div className="flex flex-row items-center gap-2">
-        <Link to={`/vault/file/${file.parent}/${file.uuid}`}>{file.name}</Link>
+        <Link to={`/vault/file/${file.parent}/${file.uuid}`}>
+          {file.filename}
+        </Link>
         <span className="flex flex-row grow-0 gap-1 invisible text-right group-hover:visible">
           <RenameButton file={file} />
           <span

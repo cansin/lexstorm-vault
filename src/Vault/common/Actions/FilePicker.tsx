@@ -9,6 +9,7 @@ export default function FilePicker({ onUploadDone }) {
       onUploadDone={onUploadDone}
       pickerOptions={{
         accept: ["application/pdf"],
+        maxFiles: 9,
         fromSources: [
           "local_file_system",
           "url",
