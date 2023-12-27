@@ -4,9 +4,9 @@ import { Field, Form, Formik } from "formik";
 
 import useCreateFolder from "./useCreateFolder";
 
-export default function CreateFolderButton({ parentUuid }) {
+export default function CreateFolderButton({ parent }) {
   const { handleCreateFolder, showCreateFolderModal, toggleCreateFolderModal } =
-    useCreateFolder();
+    useCreateFolder({ parent });
 
   return (
     <>
@@ -23,17 +23,12 @@ export default function CreateFolderButton({ parentUuid }) {
       <Modal show={showCreateFolderModal} onClose={toggleCreateFolderModal}>
         <Modal.Header>Create Folder</Modal.Header>
         <Modal.Body>
-          <Formik
-            initialValues={{ name: "", parent: parentUuid ?? "" }}
-            onSubmit={handleCreateFolder}
-          >
+          <Formik initialValues={{ name: "" }} onSubmit={handleCreateFolder}>
             <Form className="flex flex-col gap-4 max-w-xl mx-auto">
               <div>
                 <div className="mb-2 block">
                   <Label htmlFor="name" value="Name" />
                 </div>
-
-                <Field type="hidden" name="parent" />
 
                 <Field
                   as={TextInput}

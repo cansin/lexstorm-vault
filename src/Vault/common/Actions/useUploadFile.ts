@@ -3,24 +3,29 @@ import { ref, push, serverTimestamp } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { database } from "../../../common/firebase";
-import { queryKeyFn as allFoldersQueryKeyFn } from "../Layout/Navigation/useAllFolders";
 import { queryKeyFn as allFilesQueryKeyFn } from "../../Vault/useAllFiles";
+import { queryKeyFn as folderQueryKeyFn } from "../../Folder/useFolder";
 
-export default function useUploadFile() {
+export default function useUploadFile({ parent }) {
   const [showFilePickerModal, setShowFilePickerModal] = useState(false);
   const client = useQueryClient();
   const { mutateAsync: createFile } = useMutation({
     mutationFn(values) {
       push(ref(database, "files"), {
         ...values,
-        parent: "",
+        parent: parent?.uuid ?? "",
         created: serverTimestamp(),
         deleted: "",
       });
     },
     onSuccess() {
-      client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });
       client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
+      console.log("HERE", parent);
+      if (parent) {
+        client.invalidateQueries({
+          queryKey: folderQueryKeyFn(parent),
+        });
+      }
     },
   });
 

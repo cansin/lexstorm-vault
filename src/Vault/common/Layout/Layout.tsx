@@ -19,7 +19,7 @@ export default function Layout({ children }) {
         <>
           <Navigation className="hidden md:block" />
           <div className="flex flex-col grow overflow-hidden">
-            <ActionButtons parentUuid={uuid} />
+            <ActionButtons parent={{ uuid }} />
             {children ?? <Outlet />}
           </div>
         </>

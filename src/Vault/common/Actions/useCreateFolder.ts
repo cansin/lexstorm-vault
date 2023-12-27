@@ -6,12 +6,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { database } from "../../../common/firebase";
 import { queryKeyFn as allFoldersQueryKeyFn } from "../Layout/Navigation/useAllFolders";
 
-export default function useCreateFolder() {
+export default function useCreateFolder({ parent }) {
   const [showCreateFolderModal, setShowCreateFolderModal] = useState(false);
   const client = useQueryClient();
   const { mutateAsync: createFolder } = useMutation({
     mutationFn(values) {
-      push(ref(database, "folders"), values);
+      push(ref(database, "folders"), { ...values, parent: parent?.uuid ?? "" });
     },
     onSuccess() {
       client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });

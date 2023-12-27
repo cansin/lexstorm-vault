@@ -4,9 +4,9 @@ import { PiUploadSimple } from "react-icons/pi";
 import FilePicker from "./FilePicker";
 import useUploadFile from "./useUploadFile";
 
-export default function UploadFileButton() {
+export default function UploadFileButton({ parent }) {
   const { handleCreateFiles, showFilePickerModal, toggleFilePickerModal } =
-    useUploadFile();
+    useUploadFile({ parent });
 
   return (
     <>
