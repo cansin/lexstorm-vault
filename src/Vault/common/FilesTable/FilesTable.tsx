@@ -15,9 +15,6 @@ export default function FilesTable({ files, showParents = true }) {
         <Table.HeadCell className="hidden lg:table-cell">
           Modified
         </Table.HeadCell>
-        <Table.HeadCell>
-          <span className="sr-only">Actions</span>
-        </Table.HeadCell>
       </Table.Head>
       <Table.Body className="divide-y">
         {files.map((file) => (
