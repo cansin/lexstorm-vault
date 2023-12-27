@@ -2,7 +2,7 @@ import { Table } from "flowbite-react";
 
 import File from "./File";
 
-export default function FilesTable({ files, filter, showParents = true }) {
+export default function FilesTable({ files, showParents = true }) {
   return (
     <Table striped>
       <Table.Head>
@@ -18,11 +18,9 @@ export default function FilesTable({ files, filter, showParents = true }) {
       </Table.Head>
       <Table.Body className="divide-y">
         {files.length > 0 &&
-          files
-            .filter((file) => filter(file))
-            .map((file) => (
-              <File key={file.uuid} file={file} showParent={showParents} />
-            ))}
+          files.map((file) => (
+            <File key={file.uuid} file={file} showParent={showParents} />
+          ))}
         {files.length === 0 && (
           <Table.Row>
             <Table.Cell className="text-lg">

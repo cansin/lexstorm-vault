@@ -19,7 +19,7 @@ export default function VaultPage({ label, filter }) {
       {!isLoading && !isError && (
         <>
           <VaultBreadcrumb label={label} />
-          <FilesTable files={files} filter={filter} />
+          <FilesTable files={files.filter(filter)} />
         </>
       )}
     </div>

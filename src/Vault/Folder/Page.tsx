@@ -28,7 +28,10 @@ export default function FolderPage() {
       {!isLoading && !isError && (
         <>
           <FolderBreadcrumb folder={folder} />
-          <FilesTable files={folder.children} showParents={false} />
+          <FilesTable
+            files={folder.children.filter((f) => !f.deleted)}
+            showParents={false}
+          />
         </>
       )}
     </div>
