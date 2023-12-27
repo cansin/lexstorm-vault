@@ -44,14 +44,16 @@ export default function Folder({ folder, indent, parentUuid }) {
           open ? <PiCaretDown /> : <PiCaretRight />
         }
       >
-        {folder.children.map((child) => (
-          <Folder
-            indent={indent + 1}
-            parentUuid={folder.uuid}
-            key={child.uuid}
-            folder={child}
-          />
-        ))}
+        {folder.children
+          .filter((f) => !f.deleted)
+          .map((child) => (
+            <Folder
+              indent={indent + 1}
+              parentUuid={folder.uuid}
+              key={child.uuid}
+              folder={child}
+            />
+          ))}
       </Sidebar.Collapse>
     </>
   );
