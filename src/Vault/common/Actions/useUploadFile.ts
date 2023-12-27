@@ -20,7 +20,6 @@ export default function useUploadFile({ parent }) {
     },
     onSuccess() {
       client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
-      console.log("HERE", parent);
       if (parent) {
         client.invalidateQueries({
           queryKey: folderQueryKeyFn(parent),
