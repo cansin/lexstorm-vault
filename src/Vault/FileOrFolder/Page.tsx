@@ -6,18 +6,18 @@ import Layout from "../common/Layout/Layout";
 
 export default function FileOrFolderPage() {
   const { "*": splat } = useParams();
-  const [parents, fileOrFolder] = [
+  const [parents, uuid] = [
     splat.split("/").slice(0, -1),
     splat.split("/").at(-1),
   ];
 
-  if (fileOrFolder.toLowerCase().endsWith(".pdf")) {
-    return <FilePage parent={parents.join("/")} name={fileOrFolder} />;
+  if (uuid.toLowerCase().endsWith(".pdf")) {
+    return <FilePage path={parents.join("/")} uuid={uuid} />;
   }
 
   return (
     <Layout>
-      <FolderPage parent={parents.join("/")} name={fileOrFolder} />
+      <FolderPage path={parents.join("/")} uuid={uuid} />
     </Layout>
   );
 }

@@ -5,13 +5,10 @@ import FilesTable from "../common/FilesTable/FilesTable";
 import useFolder from "./useFolder";
 import FolderBreadcrumb from "./Breadcrumb";
 
-export default function FolderPage({ parent, name }) {
-  const {
-    isLoading,
-    isError,
-    data: folder,
-    error,
-  } = useFolder({ folder: { parent, name } });
+export default function FolderPage({ path, uuid }) {
+  const { isLoading, isError, folder, error } = useFolder({
+    folder: { path, uuid },
+  });
 
   return (
     <div className="p-1 m-3 grow overflow-auto">

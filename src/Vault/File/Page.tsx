@@ -4,13 +4,8 @@ import FileHeader from "./Header";
 import FileViewer from "./Viewer";
 import useFile from "./useFile";
 
-export default function FilePage({ parent, name }) {
-  const {
-    isLoading,
-    isError,
-    data: file,
-    error,
-  } = useFile({ file: { parent, name } });
+export default function FilePage({ path, uuid }) {
+  const { isLoading, isError, file, error } = useFile({ file: { path, uuid } });
 
   return (
     <>

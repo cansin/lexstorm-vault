@@ -20,7 +20,7 @@ export default function FilesTable({ files, showParents = true }) {
         {files
           .filter((file) => !file.deleted)
           .map((file) => (
-            <File key={file.key} file={file} showParent={showParents} />
+            <File key={file.uuid} file={file} showParent={showParents} />
           ))}
       </Table.Body>
     </Table>

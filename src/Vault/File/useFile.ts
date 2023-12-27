@@ -4,7 +4,7 @@ import randomDate from "../../common/randomDate";
 
 function mockResponse({ parent, name }) {
   return {
-    key: crypto.randomUUID(),
+    uuid: crypto.randomUUID(),
     name,
     src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
     modified: randomDate().toString(),
@@ -12,23 +12,23 @@ function mockResponse({ parent, name }) {
   };
 }
 
-function fetchFile({ parent, name }) {
+function fetchFile({ path, uuid }) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(mockResponse({ parent, name }));
+      resolve(mockResponse({ path, uuid }));
     }, 30);
   });
 }
 
-export function queryKeyFn({ parent, name }) {
-  return [`file-${parent}/${name}`];
+export function queryKeyFn({ path, uuid }) {
+  return [`file-${path}/${uuid}`];
 }
 
 export default function useFile({ file }) {
-  const query = useQuery({
+  const { data: path, ...rest } = useQuery({
     queryKey: queryKeyFn(file),
     queryFn: () => fetchFile(file),
   });
 
-  return { ...query };
+  return { path, ...rest };
 }

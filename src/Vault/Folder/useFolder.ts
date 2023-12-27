@@ -1,114 +1,40 @@
 import { useQuery } from "@tanstack/react-query";
+import {
+  get,
+  query,
+  ref,
+  orderByChild,
+  startAt,
+  child,
+} from "firebase/database";
 
-import randomDate from "../../common/randomDate";
+import { database } from "../../common/firebase";
+import buildFileList from "../../common/buildFileList";
 
-function mockResponse({ parent, name }) {
-  return {
-    key: crypto.randomUUID(),
-    name,
-    parent,
-    children: [
-      {
-        key: crypto.randomUUID(),
-        name: "2023 Litigation Overview.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "M&A Strategy Guide.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Real Estate Contract Template.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Intellectual Property Rights.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Employment Law Basics.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Recruitment Policy Manual.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Q1 Financial Report 2023.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Board Meeting Summary Jan 2023.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "Adams vs National Bank Analysis.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-      {
-        key: crypto.randomUUID(),
-        name: "2023 HR Handbook.pdf",
-        src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-        parent: `${parent}/${name}`,
-        modified: randomDate(),
-        deleted: null,
-      },
-    ],
-  };
+async function fetchFiles({ uuid }) {
+  return (
+    await get(
+      query(ref(database, "files"), orderByChild("parent"), startAt(uuid)),
+    )
+  ).val();
 }
 
-function fetchFolder({ parent, name }) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockResponse({ parent, name }));
-    }, 30);
-  });
+async function fetchFolder({ uuid }) {
+  const folder = (await get(child(ref(database), `folders/${uuid}`))).val();
+  const files = await fetchFiles({ uuid });
+
+  return { ...folder, children: buildFileList(files) };
 }
 
-export function queryKeyFn({ parent, name }) {
-  return [`folder-${parent}/${name}`];
+export function queryKeyFn({ path, uuid }) {
+  return [`folder-${path}/${uuid}`];
 }
 
-export default function useFolder({ folder }) {
-  const query = useQuery({
-    queryKey: queryKeyFn(folder),
-    queryFn: () => fetchFolder(folder),
+export default function useFolder({ folder: { path, uuid } }) {
+  const { data: folder, ...rest } = useQuery({
+    queryKey: queryKeyFn({ path, uuid }),
+    queryFn: () => fetchFolder({ path, uuid }),
   });
 
-  return { ...query };
+  return { folder, ...rest };
 }
