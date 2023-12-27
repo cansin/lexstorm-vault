@@ -13,8 +13,8 @@ const indentations = {
   6: "pl-28",
 };
 
-export default function Folder({ folder, indent, parent }) {
-  const path = [parent, folder.uuid].filter((e) => e).join("/");
+export default function Folder({ folder, indent, parentUuid }) {
+  const path = [parentUuid, folder.uuid].filter((e) => e).join("/");
 
   if (!folder?.children.length) {
     return (
@@ -49,7 +49,7 @@ export default function Folder({ folder, indent, parent }) {
         {folder.children.map((child) => (
           <Folder
             indent={indent + 1}
-            parent={path}
+            parentUuid={folder.uuid}
             key={child.uuid}
             folder={child}
           />

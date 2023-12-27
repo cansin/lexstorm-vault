@@ -8,13 +8,9 @@ import FolderBreadcrumb from "./Breadcrumb";
 
 export default function FolderPage() {
   const { "*": splat } = useParams();
-  const [parents, uuid] = [
-    splat.split("/").slice(0, -1),
-    splat.split("/").at(-1),
-  ];
-  const path = parents.join("/");
+  const uuid = splat.split("/").at(-1);
   const { isLoading, isError, folder, error } = useFolder({
-    folder: { path, uuid },
+    folder: { uuid },
   });
 
   return (

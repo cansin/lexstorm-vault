@@ -13,7 +13,7 @@ export default function useUploadFile({ parent }) {
     mutationFn(values) {
       push(ref(database, "files"), {
         ...values,
-        parent: parent?.uuid ?? "",
+        parentUuid: parent?.uuid ?? "",
         created: serverTimestamp(),
         deleted: "",
       });

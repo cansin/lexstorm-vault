@@ -5,7 +5,7 @@ import { queryKeyFn as allFilesQueryKeyFn } from "../../../../Vault/useAllFiles"
 import { queryKeyFn as folderQueryKeyFn } from "../../../../Folder/useFolder";
 import { database } from "../../../../../common/firebase";
 
-export const useDeleteFile = ({ file: { parent, uuid } }) => {
+export const useDeleteFile = ({ file: { parentUuid, uuid } }) => {
   const client = useQueryClient();
   const { mutateAsync: deleteFile, ...rest } = useMutation({
     mutationFn() {
@@ -13,9 +13,9 @@ export const useDeleteFile = ({ file: { parent, uuid } }) => {
     },
     onSuccess() {
       client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
-      if (parent) {
+      if (parentUuid) {
         client.invalidateQueries({
-          queryKey: folderQueryKeyFn(parent),
+          queryKey: folderQueryKeyFn({ uuid: parentUuid }),
         });
       }
     },

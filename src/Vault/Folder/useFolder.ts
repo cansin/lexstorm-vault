@@ -17,7 +17,7 @@ async function fetchFiles({ uuid }) {
     await get(
       query(
         ref(database, "files"),
-        orderByChild("parent"),
+        orderByChild("parentUuid"),
         startAt(uuid),
         endAt(uuid),
       ),

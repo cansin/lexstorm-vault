@@ -11,7 +11,10 @@ export default function useCreateFolder({ parent }) {
   const client = useQueryClient();
   const { mutateAsync: createFolder } = useMutation({
     mutationFn(values) {
-      push(ref(database, "folders"), { ...values, parent: parent?.uuid ?? "" });
+      push(ref(database, "folders"), {
+        ...values,
+        parentUuid: parent?.uuid ?? "",
+      });
     },
     onSuccess() {
       client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });

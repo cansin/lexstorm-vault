@@ -1,10 +1,10 @@
 {
   "rules": {
     "folders" : {
-      ".indexOn": ["parent"]
+      ".indexOn": ["parentUuid"]
     },
     "files" : {
-      ".indexOn": ["parent"]
+      ".indexOn": ["parentUuid"]
     },
     ".read": true,
     ".write": true

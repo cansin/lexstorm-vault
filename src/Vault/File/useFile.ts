@@ -7,14 +7,14 @@ async function fetchFile({ uuid }) {
   return (await get(child(ref(database), `files/${uuid}`))).val();
 }
 
-export function queryKeyFn({ path, uuid }) {
-  return [`file-${path}/${uuid}`];
+export function queryKeyFn({ uuid }) {
+  return [`file-${uuid}`];
 }
 
-export default function useFile({ file: { path, uuid } }) {
+export default function useFile({ file: { uuid } }) {
   const { data: file, ...rest } = useQuery({
-    queryKey: queryKeyFn({ path, uuid }),
-    queryFn: () => fetchFile({ path, uuid }),
+    queryKey: queryKeyFn({ uuid }),
+    queryFn: () => fetchFile({ uuid }),
   });
 
   return { file, ...rest };

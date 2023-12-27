@@ -10,7 +10,7 @@ export default function NameCell({ file, hideMoveButton }) {
   return (
     <Table.Cell className="font-medium text-gray-900">
       <div className="flex flex-row items-center gap-2">
-        <Link to={`/vault/file/${file.parent}/${file.uuid}`}>
+        <Link to={`/vault/file/${file.parentUuid}/${file.uuid}`}>
           {file.filename}
         </Link>
         {!file.deleted && (

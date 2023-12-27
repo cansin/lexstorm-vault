@@ -10,8 +10,8 @@ export default function buildFolderTree(folders) {
   // Build the tree structure
   for (const uuid in folderMap) {
     const folder = folderMap[uuid];
-    if (folder.parent) {
-      folderMap[folder.parent].children.push(folder);
+    if (folder.parentUuid) {
+      folderMap[folder.parentUuid].children.push(folder);
     } else {
       tree.children.push(folder);
     }
