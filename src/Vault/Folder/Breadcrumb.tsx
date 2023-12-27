@@ -7,7 +7,7 @@ export default function FolderBreadcrumb({ folder }) {
       <Breadcrumb.Item>
         <PiDatabase className="text-lg" />
       </Breadcrumb.Item>
-      {folder?.parent?.split("/").map((parent) => (
+      {folder.path?.split("/").map((parent) => (
         <Breadcrumb.Item key={parent}>
           <span className="text-lg">{parent}</span>
         </Breadcrumb.Item>

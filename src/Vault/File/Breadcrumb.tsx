@@ -7,11 +7,13 @@ export default function FileBreadcrumb({ file }) {
       <Breadcrumb.Item>
         <PiDatabase />
       </Breadcrumb.Item>
-      {file.parent.split("/").map((folder) => (
-        <Breadcrumb.Item key={folder}>{folder}</Breadcrumb.Item>
-      ))}
+      {file.path
+        ?.split("/")
+        .map((folder) => (
+          <Breadcrumb.Item key={folder}>{folder}</Breadcrumb.Item>
+        ))}
       <Breadcrumb.Item>
-        <span className="text-lg text-gray-800">{file.name}</span>
+        <span className="text-lg text-gray-800">{file.filename}</span>
       </Breadcrumb.Item>
     </Breadcrumb>
   );

@@ -34,13 +34,11 @@ export default function Folder({ folder, indent, parentUuid }) {
       <Sidebar.Collapse
         className={twMerge(indentations[indent] ?? "pl-32", "flex-row-reverse")}
         label={
-          <Link
-            to={
-              folder.name ? `/vault/folder/${folder.uuid}` : "/vault/all-files"
-            }
-          >
-            {folder.name ?? "Folders"}
-          </Link>
+          folder.name ? (
+            <Link to={`/vault/folder/${folder.uuid}`}>{folder.name}</Link>
+          ) : (
+            "Folders"
+          )
         }
         renderChevronIcon={(theme, open) =>
           open ? <PiCaretDown /> : <PiCaretRight />
