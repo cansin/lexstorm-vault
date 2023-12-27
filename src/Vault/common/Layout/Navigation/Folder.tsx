@@ -1,6 +1,6 @@
 import { Sidebar } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
-import { PiFolder, PiFolderMinus, PiFolderPlus } from "react-icons/pi";
+import { PiCaretDown, PiCaretRight, PiFolder } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 const indentations = {
@@ -19,7 +19,7 @@ export default function Folder({ folder, indent, parent }) {
   if (!folder?.children.length) {
     return (
       <Sidebar.Item
-        className={indentations[indent] ?? "pl-28"}
+        className={indentations[indent] ?? "pl-36"}
         as={Link}
         to={`/vault/folder/${path}`}
         icon={PiFolder}
@@ -30,21 +30,36 @@ export default function Folder({ folder, indent, parent }) {
   }
 
   return (
-    <Sidebar.Collapse
-      className={twMerge(indentations[indent] ?? "pl-28", "flex-row-reverse")}
-      label={folder.name ?? "Folders"}
-      renderChevronIcon={(theme, open) =>
-        open ? <PiFolderMinus /> : <PiFolderPlus />
-      }
-    >
-      {folder.children.map((child) => (
-        <Folder
-          indent={indent + 1}
-          parent={path}
-          key={child.uuid}
-          folder={child}
-        />
-      ))}
-    </Sidebar.Collapse>
+    <>
+      <Sidebar.Collapse
+        className={twMerge(indentations[indent] ?? "pl-32", "flex-row-reverse")}
+        label={
+          <div className="flex flex-row gap-2 items-center">
+            <PiFolder className="shrink-0" />
+            <Link
+              to={
+                folder.name
+                  ? `/vault/folder/${folder.uuid}`
+                  : "/vault/all-files"
+              }
+            >
+              {folder.name ?? "Folders"}
+            </Link>
+          </div>
+        }
+        renderChevronIcon={(theme, open) =>
+          open ? <PiCaretRight /> : <PiCaretDown />
+        }
+      >
+        {folder.children.map((child) => (
+          <Folder
+            indent={indent + 1}
+            parent={path}
+            key={child.uuid}
+            folder={child}
+          />
+        ))}
+      </Sidebar.Collapse>
+    </>
   );
 }
