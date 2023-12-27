@@ -1,11 +1,18 @@
 import { Spinner } from "flowbite-react";
+import { useParams } from "react-router-dom";
 
 import FilesTable from "../common/FilesTable/FilesTable";
 
 import useFolder from "./useFolder";
 import FolderBreadcrumb from "./Breadcrumb";
 
-export default function FolderPage({ path, uuid }) {
+export default function FolderPage() {
+  const { "*": splat } = useParams();
+  const [parents, uuid] = [
+    splat.split("/").slice(0, -1),
+    splat.split("/").at(-1),
+  ];
+  const path = parents.join("/");
   const { isLoading, isError, folder, error } = useFolder({
     folder: { path, uuid },
   });

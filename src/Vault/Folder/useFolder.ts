@@ -5,6 +5,7 @@ import {
   ref,
   orderByChild,
   startAt,
+  endAt,
   child,
 } from "firebase/database";
 
@@ -14,7 +15,12 @@ import buildFileList from "../../common/buildFileList";
 async function fetchFiles({ uuid }) {
   return (
     await get(
-      query(ref(database, "files"), orderByChild("parent"), startAt(uuid)),
+      query(
+        ref(database, "files"),
+        orderByChild("parent"),
+        startAt(uuid),
+        endAt(uuid),
+      ),
     )
   ).val();
 }

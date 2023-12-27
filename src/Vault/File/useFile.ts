@@ -1,34 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
+import { get, ref, child } from "firebase/database";
 
-import randomDate from "../../common/randomDate";
+import { database } from "../../common/firebase";
 
-function mockResponse({ parent, name }) {
-  return {
-    uuid: crypto.randomUUID(),
-    name,
-    src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-    modified: randomDate().toString(),
-    parent,
-  };
-}
-
-function fetchFile({ path, uuid }) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockResponse({ path, uuid }));
-    }, 30);
-  });
+async function fetchFile({ uuid }) {
+  return (await get(child(ref(database), `files/${uuid}`))).val();
 }
 
 export function queryKeyFn({ path, uuid }) {
   return [`file-${path}/${uuid}`];
 }
 
-export default function useFile({ file }) {
-  const { data: path, ...rest } = useQuery({
-    queryKey: queryKeyFn(file),
-    queryFn: () => fetchFile(file),
+export default function useFile({ file: { path, uuid } }) {
+  const { data: file, ...rest } = useQuery({
+    queryKey: queryKeyFn({ path, uuid }),
+    queryFn: () => fetchFile({ path, uuid }),
   });
 
-  return { path, ...rest };
+  return { file, ...rest };
 }

@@ -4,7 +4,8 @@ import FourOhFourPage from "../FourOhFour/Page";
 
 import AllFilesPage from "./AllFiles/Page";
 import Layout from "./common/Layout/Layout";
-import FileOrFolderPage from "./FileOrFolder/Page";
+import FolderPage from "./Folder/Page";
+import FilePage from "./File/Page";
 
 export default function getVaultRoutes() {
   return [
@@ -34,13 +35,17 @@ export default function getVaultRoutes() {
               path: "deleted-files",
               element: <FourOhFourPage />,
             },
+            {
+              path: "folder/*",
+              element: <FolderPage />,
+            },
           ],
         },
       ],
     },
     {
-      path: "vault/*",
-      element: <FileOrFolderPage />,
+      path: "/vault/file/*",
+      element: <FilePage />,
     },
   ];
 }

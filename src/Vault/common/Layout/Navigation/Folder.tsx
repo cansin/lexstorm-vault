@@ -21,7 +21,7 @@ export default function Folder({ folder, indent, parent }) {
       <Sidebar.Item
         className={indentations[indent] ?? "pl-28"}
         as={Link}
-        to={`/vault/${path}`}
+        to={`/vault/folder/${path}`}
         icon={PiFolder}
       >
         {folder.name}
