@@ -5,7 +5,7 @@ import randomDate from "../../common/randomDate";
 const mockResponse = {
   items: [
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "2023 Litigation Overview.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Case Files/2023 Litigations",
@@ -13,7 +13,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "M&A Strategy Guide.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Case Files/Mergers & Acquisitions",
@@ -21,7 +21,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Real Estate Contract Template.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Case Files/Real Estate Contracts",
@@ -29,7 +29,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Intellectual Property Rights.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Case Files/Intellectual Property",
@@ -37,7 +37,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Employment Law Basics.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Case Files/Employment Law",
@@ -45,7 +45,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Recruitment Policy Manual.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Internal Documents/HR Policies/Recruitment",
@@ -53,7 +53,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Q1 Financial Report 2023.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Internal Documents/Financial Reports/2023/Q1",
@@ -61,7 +61,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Board Meeting Summary Jan 2023.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Internal Documents/Meeting Minutes/Board Meetings/2023",
@@ -69,7 +69,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "Adams vs National Bank Analysis.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Internal Documents/2022 Archive/Litigation Cases",
@@ -77,7 +77,7 @@ const mockResponse = {
       deleted: null,
     },
     {
-      uuid: crypto.randomUUID(),
+      key: crypto.randomUUID(),
       name: "2023 HR Handbook.pdf",
       src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
       parent: "Internal Documents/HR Policies/Employee Handbook",

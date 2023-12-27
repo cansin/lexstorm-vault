@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const mockResponse = {
-  uuid: crypto.randomUUID(),
+  key: crypto.randomUUID(),
   name: "Cansin Yildiz",
   email: "cansinyildiz@gmail.com",
   image:

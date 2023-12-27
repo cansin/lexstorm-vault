@@ -23,7 +23,7 @@ export default function ContactPage() {
           <div className="mb-2 block">
             <Label htmlFor="name" value="Your name" />
           </div>
-          <TextInput id="name" type="email" placeholder="John Doe" required />
+          <TextInput id="name" type="text" placeholder="John Doe" required />
         </div>
         <div>
           <div className="mb-2 block">

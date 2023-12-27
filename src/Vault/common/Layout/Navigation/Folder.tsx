@@ -41,7 +41,7 @@ export default function Folder({ folder, indent, parent }) {
         <Folder
           indent={indent + 1}
           parent={`${path}`}
-          key={child.uuid}
+          key={child.key}
           folder={child}
         />
       ))}

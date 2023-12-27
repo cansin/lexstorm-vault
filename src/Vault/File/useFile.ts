@@ -4,7 +4,7 @@ import randomDate from "../../common/randomDate";
 
 function mockResponse({ parent, name }) {
   return {
-    uuid: crypto.randomUUID(),
+    key: crypto.randomUUID(),
     name,
     src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
     modified: randomDate().toString(),

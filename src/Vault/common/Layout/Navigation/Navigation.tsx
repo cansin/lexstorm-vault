@@ -19,7 +19,7 @@ const theme: CustomFlowbiteTheme["sidebar"] = {
 };
 
 export default function Navigation({ className }) {
-  const { isLoading, isError, data, error } = useAllFolders();
+  const { isLoading, isError, vault, error } = useAllFolders();
 
   return (
     <Sidebar
@@ -45,7 +45,7 @@ export default function Navigation({ className }) {
           )}
 
           {!isLoading && !isError && (
-            <Folder indent={0} folder={{ children: data.items }} />
+            <Folder indent={0} folder={{ children: vault.children }} />
           )}
 
           {!isLoading && isError && <Sidebar.CTA>{error}</Sidebar.CTA>}
