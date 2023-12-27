@@ -1,98 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import { get, query, ref } from "firebase/database";
 
-import randomDate from "../../common/randomDate";
+import { database } from "../../common/firebase";
+import buildFileList from "../../common/buildFileList";
 
-const mockResponse = {
-  items: [
-    {
-      uuid: crypto.randomUUID(),
-      name: "2023 Litigation Overview.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Case Files/2023 Litigations",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "M&A Strategy Guide.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Case Files/Mergers & Acquisitions",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Real Estate Contract Template.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Case Files/Real Estate Contracts",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Intellectual Property Rights.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Case Files/Intellectual Property",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Employment Law Basics.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Case Files/Employment Law",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Recruitment Policy Manual.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Internal Documents/HR Policies/Recruitment",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Q1 Financial Report 2023.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Internal Documents/Financial Reports/2023/Q1",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Board Meeting Summary Jan 2023.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Internal Documents/Meeting Minutes/Board Meetings/2023",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "Adams vs National Bank Analysis.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Internal Documents/2022 Archive/Litigation Cases",
-      modified: randomDate(),
-      deleted: null,
-    },
-    {
-      uuid: crypto.randomUUID(),
-      name: "2023 HR Handbook.pdf",
-      src: "https://cdn.filestackcontent.com/O7oBXd8hRfW9cyVpqbe6",
-      parent: "Internal Documents/HR Policies/Employee Handbook",
-      modified: randomDate(),
-      deleted: null,
-    },
-  ],
-};
+async function fetchAllFiles() {
+  const files = (await get(query(ref(database, "files")))).val();
 
-function fetchAllFiles() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockResponse);
-    }, 30);
-  });
+  return buildFileList(files);
 }
 
 export function queryKeyFn() {
@@ -100,6 +15,10 @@ export function queryKeyFn() {
 }
 
 export default function useAllFiles() {
-  const query = useQuery({ queryuuid: queryKeyFn(), queryFn: fetchAllFiles });
-  return { ...query };
+  const { data: files, ...rest } = useQuery({
+    queryKey: queryKeyFn(),
+    queryFn: fetchAllFiles,
+  });
+
+  return { files, ...rest };
 }

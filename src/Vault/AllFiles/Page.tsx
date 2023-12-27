@@ -6,7 +6,7 @@ import useAllFiles from "./useAllFiles";
 import AllFilesBreadcrumb from "./Breadcrumb";
 
 export default function AllFilesPage() {
-  const { isLoading, isError, data, error } = useAllFiles();
+  const { isLoading, isError, files, error } = useAllFiles();
 
   return (
     <div className="p-1 m-3 grow overflow-auto">
@@ -19,7 +19,7 @@ export default function AllFilesPage() {
       {!isLoading && !isError && (
         <>
           <AllFilesBreadcrumb />
-          <FilesTable files={data.items} />
+          <FilesTable files={files} />
         </>
       )}
     </div>

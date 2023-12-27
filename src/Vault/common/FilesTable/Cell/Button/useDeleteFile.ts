@@ -1,15 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ref, set } from "firebase/database";
 
 import { queryKeyFn as allFilesQueryKeyFn } from "../../../../AllFiles/useAllFiles";
 import { queryKeyFn as folderQueryKeyFn } from "../../../../Folder/useFolder";
+import { database } from "../../../../../common/firebase";
 
-function deleteFile(file) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      file.deleted = new Date();
-      resolve(file);
-    }, 30);
-  });
+async function deleteFile({ uuid }) {
+  await set(ref(database, `files/${uuid}`), { deleted: new Date() });
 }
 
 function getParentFolder({ parent }) {
