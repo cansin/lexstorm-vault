@@ -7,7 +7,7 @@ import buildFileList from "../../common/buildFileList";
 async function fetchAllFiles() {
   const files = (await get(query(ref(database, "files")))).val();
 
-  return buildFileList(files);
+  return buildFileList({ files });
 }
 
 export function queryKeyFn() {

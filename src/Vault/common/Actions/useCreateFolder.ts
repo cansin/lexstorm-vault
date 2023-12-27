@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { type FormikHelpers } from "formik";
-import { ref, push } from "firebase/database";
+import { ref, push, serverTimestamp } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { database } from "../../../common/firebase";
@@ -14,6 +14,8 @@ export default function useCreateFolder({ parent }) {
       push(ref(database, "folders"), {
         ...values,
         parentUuid: parent?.uuid ?? "",
+        created: serverTimestamp(),
+        deleted: "",
       });
     },
     onSuccess() {

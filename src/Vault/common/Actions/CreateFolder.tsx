@@ -23,17 +23,20 @@ export default function CreateFolderButton({ parent }) {
       <Modal show={showCreateFolderModal} onClose={toggleCreateFolderModal}>
         <Modal.Header>Create Folder</Modal.Header>
         <Modal.Body>
-          <Formik initialValues={{ name: "" }} onSubmit={handleCreateFolder}>
+          <Formik
+            initialValues={{ filename: "" }}
+            onSubmit={handleCreateFolder}
+          >
             <Form className="flex flex-col gap-4 max-w-xl mx-auto">
               <div>
                 <div className="mb-2 block">
-                  <Label htmlFor="name" value="Name" />
+                  <Label htmlFor="filename" value="Name" />
                 </div>
 
                 <Field
                   as={TextInput}
-                  id="name"
-                  name="name"
+                  id="filename"
+                  name="filename"
                   type="text"
                   placeholder="Folder Name"
                   required

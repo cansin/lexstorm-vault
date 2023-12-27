@@ -1,6 +1,7 @@
 import { Table } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
+import { PiFolder } from "react-icons/pi";
 
 import RenameButton from "./Button/Rename";
 import MoveButton from "./Button/Move";
@@ -10,8 +11,15 @@ export default function NameCell({ file, hideMoveButton }) {
   return (
     <Table.Cell className="font-medium text-gray-900">
       <div className="flex flex-row items-center gap-2">
-        <Link to={`/vault/file/${file.parentUuid}/${file.uuid}`}>
-          {file.filename}
+        <Link
+          to={`/vault/${file.isFolder ? "folder" : "file"}/${file.parentUuid}/${
+            file.uuid
+          }`}
+        >
+          <span className="flex flex-row gap-2 items-center">
+            {file.isFolder && <PiFolder />}
+            {file.filename}
+          </span>
         </Link>
         {!file.deleted && (
           <span className="flex flex-row grow-0 gap-1 invisible text-right group-hover:visible">

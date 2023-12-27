@@ -12,24 +12,46 @@ import {
 import { database } from "../../common/firebase";
 import buildFileList from "../../common/buildFileList";
 
-async function fetchFiles({ uuid }) {
-  return (
-    await get(
-      query(
-        ref(database, "files"),
-        orderByChild("parentUuid"),
-        startAt(uuid),
-        endAt(uuid),
-      ),
-    )
-  ).val();
+async function fetchChildFiles({ uuid }) {
+  return get(
+    query(
+      ref(database, "files"),
+      orderByChild("parentUuid"),
+      startAt(uuid),
+      endAt(uuid),
+    ),
+  );
+}
+
+function fetchChildFolders({ uuid }) {
+  return get(
+    query(
+      ref(database, "folders"),
+      orderByChild("parentUuid"),
+      startAt(uuid),
+      endAt(uuid),
+    ),
+  );
+}
+
+function fetchCurrentFolder({ uuid }) {
+  return get(child(ref(database), `folders/${uuid}`));
 }
 
 async function fetchFolder({ uuid }) {
-  const folder = (await get(child(ref(database), `folders/${uuid}`))).val();
-  const files = await fetchFiles({ uuid });
+  const [folder, childFolders, childFiles] = await Promise.all([
+    fetchCurrentFolder({ uuid }),
+    fetchChildFolders({ uuid }),
+    fetchChildFiles({ uuid }),
+  ]);
 
-  return { ...folder, children: buildFileList(files) };
+  return {
+    ...folder.val(),
+    children: buildFileList({
+      folders: childFolders.val() ?? {},
+      files: childFiles.val() ?? {},
+    }),
+  };
 }
 
 export function queryKeyFn({ uuid }) {
