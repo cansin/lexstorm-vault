@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 import CommonLayout from "../../../common/Layout/Layout";
 import CommonFooter from "../../../common/Layout/Footer/Footer";
@@ -8,6 +8,9 @@ import ActionButtons from "../Actions/Actions";
 import Navigation from "./Navigation/Navigation";
 
 export default function Layout({ children }) {
+  const { "*": splat } = useParams();
+  const uuid = splat?.split("/").at(-1);
+
   return (
     <CommonLayout
       footer={<CommonFooter copyrightClassName="bg-gray-50 border-r" />}
@@ -16,7 +19,7 @@ export default function Layout({ children }) {
         <>
           <Navigation className="hidden md:block" />
           <div className="flex flex-col grow overflow-hidden">
-            <ActionButtons />
+            <ActionButtons parentUuid={uuid} />
             {children ?? <Outlet />}
           </div>
         </>

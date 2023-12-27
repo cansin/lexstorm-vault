@@ -5,10 +5,6 @@ import { queryKeyFn as allFilesQueryKeyFn } from "../../../../AllFiles/useAllFil
 import { queryKeyFn as folderQueryKeyFn } from "../../../../Folder/useFolder";
 import { database } from "../../../../../common/firebase";
 
-async function deleteFile({ uuid }) {
-  await set(ref(database, `files/${uuid}`), { deleted: new Date() });
-}
-
 function getParentFolder({ parent }) {
   const path = parent.split("/");
   return {
@@ -17,11 +13,11 @@ function getParentFolder({ parent }) {
   };
 }
 
-export const useDeleteFile = ({ file }) => {
+export const useDeleteFile = ({ file: { uuid } }) => {
   const client = useQueryClient();
-  const { mutate, ...rest } = useMutation({
+  const { mutateAsync: deleteFile, ...rest } = useMutation({
     mutationFn() {
-      return deleteFile(file);
+      set(ref(database, `files/${uuid}`), { deleted: new Date() });
     },
     onSuccess(file) {
       client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
@@ -32,7 +28,7 @@ export const useDeleteFile = ({ file }) => {
   });
 
   return {
-    deleteFile: mutate,
+    deleteFile,
     ...rest,
   };
 };
