@@ -3,8 +3,8 @@ import { type FormikHelpers } from "formik";
 import { ref, push, serverTimestamp } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { database } from "../../../common/firebase";
-import { queryKeyFn as allFoldersQueryKeyFn } from "../Layout/Navigation/useAllFolders";
+import { database } from "../../../../common/firebase";
+import { queryKeyFn as allFoldersQueryKeyFn } from "../../Layout/Navigation/useAllFolders";
 
 export default function useCreateFolder({ parent }) {
   const [showCreateFolderModal, setShowCreateFolderModal] = useState(false);

@@ -24,7 +24,7 @@ export default function Folder({ folder, indent, parentUuid }) {
         to={`/vault/folder/${path}`}
         icon={PiDotOutline}
       >
-        {folder.name}
+        {folder.filename}
       </Sidebar.Item>
     );
   }
@@ -34,8 +34,8 @@ export default function Folder({ folder, indent, parentUuid }) {
       <Sidebar.Collapse
         className={twMerge(indentations[indent] ?? "pl-32", "flex-row-reverse")}
         label={
-          folder.name ? (
-            <Link to={`/vault/folder/${folder.uuid}`}>{folder.name}</Link>
+          folder.filename ? (
+            <Link to={`/vault/folder/${folder.uuid}`}>{folder.filename}</Link>
           ) : (
             "Folders"
           )

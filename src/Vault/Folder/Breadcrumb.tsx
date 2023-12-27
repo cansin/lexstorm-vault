@@ -13,7 +13,7 @@ export default function FolderBreadcrumb({ folder }) {
         </Breadcrumb.Item>
       ))}
       <Breadcrumb.Item>
-        <span className="text-2xl text-gray-800">{folder.name}</span>
+        <span className="text-2xl text-gray-800">{folder.filename}</span>
       </Breadcrumb.Item>
     </Breadcrumb>
   );

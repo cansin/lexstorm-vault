@@ -1,5 +1,5 @@
-import UploadFileButton from "./UploadFile";
-import CreateFolderButton from "./CreateFolder";
+import UploadFileButton from "./UploadFile/Button";
+import CreateFolderButton from "./CreateFolder/Button";
 
 export default function ActionButtons({ parent }) {
   return (
