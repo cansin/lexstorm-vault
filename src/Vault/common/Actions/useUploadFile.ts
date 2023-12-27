@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { database } from "../../../common/firebase";
 import { queryKeyFn as allFoldersQueryKeyFn } from "../Layout/Navigation/useAllFolders";
+import { queryKeyFn as allFilesQueryKeyFn } from "../../AllFiles/useAllFiles";
 
 export default function useUploadFile() {
   const [showFilePickerModal, setShowFilePickerModal] = useState(false);
@@ -19,6 +20,7 @@ export default function useUploadFile() {
     },
     onSuccess() {
       client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });
+      client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
     },
   });
 

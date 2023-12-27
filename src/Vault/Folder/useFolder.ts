@@ -32,14 +32,14 @@ async function fetchFolder({ uuid }) {
   return { ...folder, children: buildFileList(files) };
 }
 
-export function queryKeyFn({ path, uuid }) {
-  return [`folder-${path}/${uuid}`];
+export function queryKeyFn({ uuid }) {
+  return [`folder-${uuid}`];
 }
 
-export default function useFolder({ folder: { path, uuid } }) {
+export default function useFolder({ folder: { uuid } }) {
   const { data: folder, ...rest } = useQuery({
-    queryKey: queryKeyFn({ path, uuid }),
-    queryFn: () => fetchFolder({ path, uuid }),
+    queryKey: queryKeyFn({ uuid }),
+    queryFn: () => fetchFolder({ uuid }),
   });
 
   return { folder, ...rest };
