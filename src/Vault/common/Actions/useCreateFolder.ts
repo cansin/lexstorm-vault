@@ -4,7 +4,7 @@ import { ref, push } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { database } from "../../../common/firebase";
-import { queryKeyFn as allFilesQueryKeyFn } from "../../AllFiles/useAllFiles";
+import { queryKeyFn as allFoldersQueryKeyFn } from "../Layout/Navigation/useAllFolders";
 
 export default function useCreateFolder() {
   const [showCreateFolderModal, setShowCreateFolderModal] = useState(false);
@@ -14,7 +14,7 @@ export default function useCreateFolder() {
       push(ref(database, "folders"), values);
     },
     onSuccess() {
-      client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
+      client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });
     },
   });
 

@@ -9,9 +9,13 @@ async function fetchAllFolders() {
   return buildFolderTree(folders);
 }
 
+export function queryKeyFn() {
+  return ["all-folders"];
+}
+
 export default function useAllFolders() {
   const { data: vault, ...rest } = useQuery({
-    queryKey: ["all-folders"],
+    queryKey: queryKeyFn(),
     queryFn: fetchAllFolders,
   });
   return { vault, ...rest };
