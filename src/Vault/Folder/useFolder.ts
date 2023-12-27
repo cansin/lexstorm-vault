@@ -88,7 +88,7 @@ function mockResponse({ parent, name }) {
         modified: randomDate(),
         deleted: null,
       },
-    ].slice(Math.floor(Math.random() * 5), 5 + Math.floor(Math.random() * 5)),
+    ],
   };
 }
 
@@ -100,10 +100,14 @@ function fetchFolder({ parent, name }) {
   });
 }
 
-export default function useFolder({ parent, name }) {
+export function queryKeyFn({ parent, name }) {
+  return [`folder-${parent}/${name}`];
+}
+
+export default function useFolder({ folder }) {
   const query = useQuery({
-    queryKey: [`folder-${parent}-${name}`],
-    queryFn: () => fetchFolder({ parent, name }),
+    queryKey: queryKeyFn(folder),
+    queryFn: () => fetchFolder(folder),
   });
 
   return { ...query };

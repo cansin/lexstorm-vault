@@ -8,7 +8,7 @@ export default function ParentFolderCell({ file }) {
       <div className="flex flex-row items-center gap-2">
         /{file.parent}
         <div className="invisible group-hover:visible">
-          <MoveButton />
+          <MoveButton file={file} />
         </div>
       </div>
     </Table.Cell>

@@ -17,9 +17,11 @@ export default function FilesTable({ files, showParents = true }) {
         </Table.HeadCell>
       </Table.Head>
       <Table.Body className="divide-y">
-        {files.map((file) => (
-          <File key={file.uuid} file={file} showParent={showParents} />
-        ))}
+        {files
+          .filter((file) => !file.deleted)
+          .map((file) => (
+            <File key={file.uuid} file={file} showParent={showParents} />
+          ))}
       </Table.Body>
     </Table>
   );

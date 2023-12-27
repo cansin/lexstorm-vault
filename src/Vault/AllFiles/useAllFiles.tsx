@@ -95,7 +95,11 @@ function fetchAllFiles() {
   });
 }
 
+export function queryKeyFn() {
+  return ["all-files"];
+}
+
 export default function useAllFiles() {
-  const query = useQuery({ queryKey: ["all-files"], queryFn: fetchAllFiles });
+  const query = useQuery({ queryKey: queryKeyFn(), queryFn: fetchAllFiles });
   return { ...query };
 }

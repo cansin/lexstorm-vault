@@ -20,10 +20,14 @@ function fetchFile({ parent, name }) {
   });
 }
 
-export default function useFile({ parent, name }) {
+export function queryKeyFn({ parent, name }) {
+  return [`file-${parent}/${name}`];
+}
+
+export default function useFile({ file }) {
   const query = useQuery({
-    queryKey: [`file-${parent}-${name}`],
-    queryFn: () => fetchFile({ parent, name }),
+    queryKey: queryKeyFn(file),
+    queryFn: () => fetchFile(file),
   });
 
   return { ...query };

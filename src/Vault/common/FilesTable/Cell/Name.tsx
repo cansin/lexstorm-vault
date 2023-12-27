@@ -12,17 +12,17 @@ export default function NameCell({ file, hideMoveButton }) {
       <div className="flex flex-row items-center gap-2">
         <Link to={`/vault/${file.parent}/${file.name}`}>{file.name}</Link>
         <span className="flex flex-row grow-0 gap-1 invisible text-right group-hover:visible">
-          <RenameButton />
+          <RenameButton file={file} />
           <span
             className={twMerge(
               "invisible group-hover:xl:invisible group-hover:visible",
               hideMoveButton ? "" : "group-hover:xl:visible",
             )}
           >
-            <MoveButton />
+            <MoveButton file={file} />
           </span>
           <span className="invisible group-hover:lg:invisible group-hover:visible">
-            <DeleteButton />
+            <DeleteButton file={file} />
           </span>
         </span>
       </div>

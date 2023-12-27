@@ -5,7 +5,12 @@ import FileViewer from "./Viewer";
 import useFile from "./useFile";
 
 export default function FilePage({ parent, name }) {
-  const { isLoading, isError, data: file, error } = useFile({ parent, name });
+  const {
+    isLoading,
+    isError,
+    data: file,
+    error,
+  } = useFile({ file: { parent, name } });
 
   return (
     <>

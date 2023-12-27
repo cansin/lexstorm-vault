@@ -6,9 +6,9 @@ export default function ModifiedCell({ file }) {
   return (
     <Table.Cell className="hidden lg:table-cell">
       <div className="flex flex-row items-center gap-2">
-        {new Date(file.modified).toDateString()}
+        {file.modified?.toDateString()} -{file.deleted?.toDateString()}
         <div className="invisible group-hover:visible">
-          <DeleteButton />
+          <DeleteButton file={file} />
         </div>
       </div>
     </Table.Cell>
