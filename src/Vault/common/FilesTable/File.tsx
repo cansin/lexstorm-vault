@@ -11,13 +11,13 @@ export default function File({ file, showParent }) {
         <Link to={`/vault/${file.parent}/${file.name}`}>{file.name}</Link>
       </Table.Cell>
       {showParent && (
-        <Table.Cell className="hidden lg:block">/{file.parent}</Table.Cell>
+        <Table.Cell className="hidden xl:table-cell">/{file.parent}</Table.Cell>
       )}
-      <Table.Cell className="hidden md:block text-nowrap">
+      <Table.Cell className="hidden lg:table-cell">
         {new Date(file.modified).toDateString()}
       </Table.Cell>
       <Table.Cell>
-        <div className="flex flex-row gap-1 justify-end invisible text-right group-hover:visible">
+        <div className="flex flex-row grow-0 gap-1 justify-end invisible text-right group-hover:visible">
           <ActionButton
             label="Rename"
             Icon={PiTextbox}

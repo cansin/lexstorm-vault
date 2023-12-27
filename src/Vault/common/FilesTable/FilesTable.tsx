@@ -8,11 +8,13 @@ export default function FilesTable({ files, showParents = true }) {
       <Table.Head>
         <Table.HeadCell>Name</Table.HeadCell>
         {showParents && (
-          <Table.HeadCell className="hidden lg:block">
+          <Table.HeadCell className="hidden xl:table-cell">
             Parent Folder
           </Table.HeadCell>
         )}
-        <Table.HeadCell className="hidden md:block">Modified</Table.HeadCell>
+        <Table.HeadCell className="hidden lg:table-cell">
+          Modified
+        </Table.HeadCell>
         <Table.HeadCell>
           <span className="sr-only">Actions</span>
         </Table.HeadCell>
