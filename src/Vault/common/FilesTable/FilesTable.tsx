@@ -17,11 +17,19 @@ export default function FilesTable({ files, showParents = true }) {
         </Table.HeadCell>
       </Table.Head>
       <Table.Body className="divide-y">
-        {files
-          .filter((file) => !file.deleted)
-          .map((file) => (
-            <File key={file.uuid} file={file} showParent={showParents} />
-          ))}
+        {files.length > 0 &&
+          files
+            .filter((file) => !file.deleted)
+            .map((file) => (
+              <File key={file.uuid} file={file} showParent={showParents} />
+            ))}
+        {files.length === 0 && (
+          <Table.Row>
+            <Table.Cell className="text-lg">
+              Use the 'Upload File' button to upload files.
+            </Table.Cell>
+          </Table.Row>
+        )}
       </Table.Body>
     </Table>
   );
