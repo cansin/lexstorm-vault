@@ -3,11 +3,11 @@ import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
 import { PiFilePdf, PiFolder } from "react-icons/pi";
 
-import RenameFileButton from "./Button/Rename/Button";
-import RenameFileForm from "./Button/Rename/Form";
-import MoveButton from "./Button/Move";
-import DeleteButton from "./Button/Delete";
-import useRenameFile from "./Button/Rename/useRenameFile";
+import RenameFileButton from "./Actions/Rename/Button";
+import RenameFileForm from "./Actions/Rename/Form";
+import MoveButton from "./Actions/Move/Move";
+import DeleteButton from "./Actions/Delete/Delete";
+import useRenameFile from "./Actions/Rename/useRenameFile";
 
 export default function NameCell({ file, hideMoveButton }) {
   const { handleRenameFile, showRenameFileField, toggleRenameFileField } =
@@ -45,7 +45,7 @@ export default function NameCell({ file, hideMoveButton }) {
                 hideMoveButton ? "" : "group-hover:xl:visible",
               )}
             >
-              <MoveButton />
+              <MoveButton file={file} />
             </span>
             <span className="invisible group-hover:lg:invisible group-hover:visible">
               <DeleteButton file={file} />

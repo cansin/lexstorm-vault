@@ -1,6 +1,6 @@
 import { Table } from "flowbite-react";
 
-import DeleteButton from "./Button/Delete";
+import DeleteButton from "./Actions/Delete/Delete";
 
 export default function CreatedCell({ file }) {
   return (

@@ -1,6 +1,6 @@
 import { Table } from "flowbite-react";
 
-import MoveButton from "./Button/Move";
+import MoveButton from "./Actions/Move/Move";
 
 export default function ParentFolderCell({ file }) {
   return (
@@ -9,7 +9,7 @@ export default function ParentFolderCell({ file }) {
         /{file.parentUuid}
         {!file.deleted && (
           <div className="invisible group-hover:visible">
-            <MoveButton />
+            <MoveButton file={file} />
           </div>
         )}
       </div>

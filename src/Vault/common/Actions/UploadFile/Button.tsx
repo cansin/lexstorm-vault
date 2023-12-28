@@ -1,8 +1,10 @@
-import { Button, Modal } from "flowbite-react";
+import { Button, Modal, Spinner } from "flowbite-react";
 import { PiUploadSimple } from "react-icons/pi";
+import { lazy, Suspense } from "react";
 
-import FilePicker from "./FilePicker";
 import useUploadFile from "./useUploadFile";
+
+const FilePicker = lazy(() => import("./FilePicker.js"));
 
 export default function UploadFileButton({ parent }) {
   const { handleCreateFiles, showFilePickerModal, toggleFilePickerModal } =
@@ -17,7 +19,16 @@ export default function UploadFileButton({ parent }) {
       <Modal show={showFilePickerModal} onClose={toggleFilePickerModal}>
         <Modal.Header>Upload File</Modal.Header>
         <Modal.Body className="p-0">
-          <FilePicker onUploadDone={handleCreateFiles} />
+          <Suspense
+            fallback={
+              <Spinner
+                aria-label="Loading file picker...."
+                className="block mx-auto"
+              />
+            }
+          >
+            <FilePicker onUploadDone={handleCreateFiles} />
+          </Suspense>
         </Modal.Body>
       </Modal>
     </>

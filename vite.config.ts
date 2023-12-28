@@ -12,6 +12,11 @@ export default defineConfig({
       typescript: true,
     }),
   ],
+  resolve: {
+    alias: {
+      src: "/src",
+    },
+  },
   server: {
     https: {
       key: fs.readFileSync("./.cert/key.pem"),

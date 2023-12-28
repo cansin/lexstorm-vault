@@ -1,7 +1,8 @@
-import { Sidebar } from "flowbite-react";
+import { Button, Sidebar } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
 import { PiCaretDown, PiCaretRight, PiDotOutline } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { act } from "react-dom/test-utils";
 
 import type FolderInterface from "../../../../common/Folder.interface";
 
@@ -20,23 +21,16 @@ const indentations = {
 interface FolderProps {
   folder: FolderInterface;
   indent: number;
-  parentUuid?: string;
+  onClick: () => void;
 }
 
-export default function Folder({
-  folder,
-  indent,
-  parentUuid = undefined,
-}: FolderProps) {
-  const path = [parentUuid, folder.uuid].filter((e) => e).join("/");
-
+export default function Folder({ folder, indent, onClick }: FolderProps) {
   if (!folder?.children?.length) {
     return (
       <Sidebar.Item
-        className={indentations[indent] ?? "pl-36"}
-        as={Link}
-        to={`/vault/folder/${path}`}
+        className={twMerge(indentations[indent] ?? "pl-36", "cursor-pointer")}
         icon={PiDotOutline}
+        onClick={() => onClick(folder)}
       >
         {folder.filename}
       </Sidebar.Item>
@@ -47,11 +41,9 @@ export default function Folder({
     <SidebarCollapse
       className={twMerge(indentations[indent] ?? "pl-32", "flex-row-reverse")}
       label={
-        folder.filename ? (
-          <Link to={`/vault/folder/${folder.uuid}`}>{folder.filename}</Link>
-        ) : (
-          "Folders"
-        )
+        <span onClick={() => onClick(folder)}>
+          {folder.filename ? folder.filename : "Folders"}
+        </span>
       }
       renderChevronIcon={(_, open) =>
         open ? <PiCaretDown /> : <PiCaretRight />
@@ -65,6 +57,7 @@ export default function Folder({
             parentUuid={folder.uuid}
             key={child.uuid}
             folder={child}
+            onClick={onClick}
           />
         ))}
     </SidebarCollapse>
