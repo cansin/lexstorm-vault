@@ -3,6 +3,10 @@ import { twMerge } from "tailwind-merge";
 import { PiCaretDown, PiCaretRight, PiDotOutline } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
+import type FolderInterface from "../../../../common/Folder.interface";
+
+import SidebarCollapse from "./Collapse";
+
 const indentations = {
   0: "pl-2",
   1: "pl-6",
@@ -13,10 +17,20 @@ const indentations = {
   6: "pl-28",
 };
 
-export default function Folder({ folder, indent, parentUuid }) {
+interface FolderProps {
+  folder: FolderInterface;
+  indent: number;
+  parentUuid?: string;
+}
+
+export default function Folder({
+  folder,
+  indent,
+  parentUuid = undefined,
+}: FolderProps) {
   const path = [parentUuid, folder.uuid].filter((e) => e).join("/");
 
-  if (!folder?.children.length) {
+  if (!folder?.children?.length) {
     return (
       <Sidebar.Item
         className={indentations[indent] ?? "pl-36"}
@@ -31,7 +45,7 @@ export default function Folder({ folder, indent, parentUuid }) {
 
   return (
     <>
-      <Sidebar.Collapse
+      <SidebarCollapse
         className={twMerge(indentations[indent] ?? "pl-32", "flex-row-reverse")}
         label={
           folder.filename ? (
@@ -40,7 +54,7 @@ export default function Folder({ folder, indent, parentUuid }) {
             "Folders"
           )
         }
-        renderChevronIcon={(theme, open) =>
+        renderChevronIcon={(_, open) =>
           open ? <PiCaretDown /> : <PiCaretRight />
         }
       >
@@ -54,7 +68,7 @@ export default function Folder({ folder, indent, parentUuid }) {
               folder={child}
             />
           ))}
-      </Sidebar.Collapse>
+      </SidebarCollapse>
     </>
   );
 }

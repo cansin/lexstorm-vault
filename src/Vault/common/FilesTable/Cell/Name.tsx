@@ -37,7 +37,7 @@ export default function NameCell({ file, hideMoveButton }) {
         {!file.deleted && (
           <span className="flex flex-row grow-0 gap-1 invisible text-right group-hover:visible">
             {!showRenameFileField && (
-              <RenameFileButton file={file} onClick={toggleRenameFileField} />
+              <RenameFileButton onClick={toggleRenameFileField} />
             )}
             <span
               className={twMerge(
@@ -45,7 +45,7 @@ export default function NameCell({ file, hideMoveButton }) {
                 hideMoveButton ? "" : "group-hover:xl:visible",
               )}
             >
-              <MoveButton file={file} />
+              <MoveButton />
             </span>
             <span className="invisible group-hover:lg:invisible group-hover:visible">
               <DeleteButton file={file} />

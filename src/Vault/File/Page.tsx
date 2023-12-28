@@ -7,16 +7,14 @@ import useFile from "./useFile";
 
 export default function FilePage() {
   const { "*": splat } = useParams();
-  const [parents, uuid] = [
-    splat.split("/").slice(0, -1),
-    splat.split("/").at(-1),
-  ];
-  const path = parents.join("/");
-  const { isLoading, isError, file, error } = useFile({ file: { path, uuid } });
+  const uuid = splat?.split("/")?.at(-1);
+  const { isLoading, isError, file, error } = useFile({
+    file: { uuid },
+  });
 
   return (
     <>
-      {!isLoading && isError && <div>{error}</div>}
+      {!isLoading && isError && <div>{error.message}</div>}
 
       {isLoading && (
         <Spinner aria-label="Loading file...." className="block mx-auto" />

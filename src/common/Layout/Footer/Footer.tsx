@@ -2,10 +2,19 @@ import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-export default function CommonFooter({ copyrightClassName }) {
+import FooterLink from "./Link";
+import FooterCopyright from "./Copyright";
+
+interface CommonFooterProps {
+  copyrightClassName?: string;
+}
+
+export default function CommonFooter({
+  copyrightClassName = undefined,
+}: CommonFooterProps) {
   return (
     <Footer className="border-0 flex">
-      <Footer.Copyright
+      <FooterCopyright
         className={twMerge(
           "w-64 p-6 h-full border-t hidden sm:block",
           copyrightClassName,
@@ -16,18 +25,18 @@ export default function CommonFooter({ copyrightClassName }) {
         year={2023}
       />
       <Footer.LinkGroup className="border-t grow p-6 justify-end">
-        <Footer.Link as={Link} to="/about">
+        <FooterLink as={Link} to="/about">
           About
-        </Footer.Link>
-        <Footer.Link as={Link} to="/privacy-policy">
+        </FooterLink>
+        <FooterLink as={Link} to="/privacy-policy">
           Privacy Policy
-        </Footer.Link>
-        <Footer.Link as={Link} to="/licensing">
+        </FooterLink>
+        <FooterLink as={Link} to="/licensing">
           Licensing
-        </Footer.Link>
-        <Footer.Link as={Link} to="/contact">
+        </FooterLink>
+        <FooterLink as={Link} to="/contact">
           Contact
-        </Footer.Link>
+        </FooterLink>
       </Footer.LinkGroup>
     </Footer>
   );

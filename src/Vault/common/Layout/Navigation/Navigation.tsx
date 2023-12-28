@@ -44,11 +44,18 @@ export default function Navigation({ className }) {
             />
           )}
 
-          {!isLoading && !isError && (
-            <Folder indent={0} folder={{ children: vault.children }} />
+          {!isLoading && !isError && vault && (
+            <Folder
+              indent={0}
+              folder={{
+                uuid: "",
+                filename: "",
+                children: vault.children,
+              }}
+            />
           )}
 
-          {!isLoading && isError && <Sidebar.CTA>{error}</Sidebar.CTA>}
+          {!isLoading && isError && <Sidebar.CTA>{error.message}</Sidebar.CTA>}
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>

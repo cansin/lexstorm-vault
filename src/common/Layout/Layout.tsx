@@ -1,9 +1,20 @@
 import { Outlet, ScrollRestoration } from "react-router-dom";
+import type { ReactNode } from "react";
 
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
-export default function CommonLayout({ footer, header, outlet }) {
+interface CommonLayoutProps {
+  footer?: ReactNode;
+  header?: ReactNode;
+  outlet?: ReactNode;
+}
+
+export default function CommonLayout({
+  footer = undefined,
+  header = undefined,
+  outlet = undefined,
+}: CommonLayoutProps) {
   return (
     <div className="flex grow flex-col overflow-y-hidden">
       {header ?? <Header />}

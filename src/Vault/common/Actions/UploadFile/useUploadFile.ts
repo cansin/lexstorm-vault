@@ -5,13 +5,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { database } from "../../../../common/firebase";
 import { queryKeyFn as allFilesQueryKeyFn } from "../../../Vault/useAllFiles";
 import { queryKeyFn as folderQueryKeyFn } from "../../../Folder/useFolder";
+import type FileInterface from "../../../../common/File.interface";
 
 export default function useUploadFile({ parent }) {
   const [showFilePickerModal, setShowFilePickerModal] = useState(false);
   const client = useQueryClient();
   const { mutateAsync: createFile } = useMutation({
-    mutationFn(values) {
-      push(ref(database, "files"), {
+    async mutationFn(values: FileInterface) {
+      await push(ref(database, "files"), {
         ...values,
         parentUuid: parent?.uuid ?? "",
         created: serverTimestamp(),

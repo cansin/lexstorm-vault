@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useMe from "./useMe";
 
 export default function UserDropdown() {
-  const { isLoading, isError, data: user, logout } = useMe();
+  const { isLoading, isError, user, logout } = useMe();
 
   useEffect(() => {
     if (!isLoading && isError) {
@@ -14,7 +14,7 @@ export default function UserDropdown() {
 
   return (
     <div className="flex md:order-2">
-      {!isLoading && !isError && (
+      {!isLoading && !isError && user && (
         <Dropdown
           arrowIcon={false}
           inline

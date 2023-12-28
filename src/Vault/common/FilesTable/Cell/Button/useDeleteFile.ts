@@ -8,8 +8,8 @@ import { database } from "../../../../../common/firebase";
 export const useDeleteFile = ({ file: { parentUuid, uuid, isFolder } }) => {
   const client = useQueryClient();
   const { mutateAsync: deleteFile, ...rest } = useMutation({
-    mutationFn() {
-      update(ref(database, `${isFolder ? "folders" : "files"}/${uuid}`), {
+    async mutationFn() {
+      await update(ref(database, `${isFolder ? "folders" : "files"}/${uuid}`), {
         deleted: serverTimestamp(),
       });
     },

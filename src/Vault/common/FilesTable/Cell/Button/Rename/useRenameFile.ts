@@ -13,8 +13,8 @@ export default function useRenameFile({
   const [showRenameFileField, setShowRenameFileField] = useState(false);
   const client = useQueryClient();
   const { mutateAsync: renameFile } = useMutation({
-    mutationFn(values) {
-      update(
+    async mutationFn(values: { filename: string }) {
+      await update(
         ref(database, `${isFolder ? "folders" : "files"}/${uuid}`),
         values,
       );
@@ -30,10 +30,7 @@ export default function useRenameFile({
     },
   });
 
-  async function handleRenameFile(
-    values: Values,
-    { setSubmitting }: FormikHelpers<Values>,
-  ) {
+  async function handleRenameFile(values, { setSubmitting }) {
     setSubmitting(true);
     await renameFile(values);
     setSubmitting(false);

@@ -1,5 +1,11 @@
-export default function buildFolderTree(folders) {
-  const tree = { uuid: null, name: null, children: [] };
+import type FolderInterface from "./Folder.interface";
+
+export default function buildFolderTree(folders: Array<FolderInterface>) {
+  const tree: {
+    uuid?: string;
+    name?: string;
+    children: Array<FolderInterface>;
+  } = { uuid: undefined, name: undefined, children: [] };
   const folderMap = {};
 
   // Create a map of all folders

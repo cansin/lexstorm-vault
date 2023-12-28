@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
+import type UserInterface from "./User.interface";
+
 const mockResponse = {
   uuid: crypto.randomUUID(),
   name: "Cansin Yildiz",
@@ -8,7 +10,7 @@ const mockResponse = {
     "https://gravatar.com/userimage/9693519/aa1f6f9977041f13cd5077c6224182a6.jpeg",
 };
 
-function fetchMe() {
+function fetchMe(): Promise<UserInterface> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(mockResponse);
@@ -17,6 +19,9 @@ function fetchMe() {
 }
 
 export default function useMe() {
-  const query = useQuery({ queryKey: ["me"], queryFn: fetchMe });
-  return { ...query, logout() {} };
+  const { data: user, ...rest } = useQuery({
+    queryKey: ["me"],
+    queryFn: fetchMe,
+  });
+  return { user, ...rest, logout() {} };
 }

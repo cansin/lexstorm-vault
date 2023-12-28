@@ -1,4 +1,5 @@
 import { Outlet, useParams } from "react-router-dom";
+import type { ReactNode } from "react";
 
 import CommonLayout from "../../../common/Layout/Layout";
 import CommonFooter from "../../../common/Layout/Footer/Footer";
@@ -7,7 +8,11 @@ import ActionButtons from "../Actions/Actions";
 
 import Navigation from "./Navigation/Navigation";
 
-export default function Layout({ children }) {
+interface LayoutProps {
+  children?: ReactNode;
+}
+
+export default function Layout({ children = undefined }: LayoutProps) {
   const { "*": splat } = useParams();
   const uuid = splat?.split("/").at(-1);
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { type FormikHelpers } from "formik";
 import { ref, push, serverTimestamp } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -10,8 +9,8 @@ export default function useCreateFolder({ parent }) {
   const [showCreateFolderModal, setShowCreateFolderModal] = useState(false);
   const client = useQueryClient();
   const { mutateAsync: createFolder } = useMutation({
-    mutationFn(values) {
-      push(ref(database, "folders"), {
+    async mutationFn(values: { filename: string }) {
+      await push(ref(database, "folders"), {
         ...values,
         parentUuid: parent?.uuid ?? "",
         created: serverTimestamp(),
@@ -23,10 +22,7 @@ export default function useCreateFolder({ parent }) {
     },
   });
 
-  async function handleCreateFolder(
-    values: Values,
-    { setSubmitting }: FormikHelpers<Values>,
-  ) {
+  async function handleCreateFolder(values, { setSubmitting }) {
     setSubmitting(true);
     await createFolder(values);
     setSubmitting(false);

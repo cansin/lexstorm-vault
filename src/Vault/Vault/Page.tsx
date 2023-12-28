@@ -10,13 +10,13 @@ export default function VaultPage({ label, filter }) {
 
   return (
     <div className="p-1 m-3 grow overflow-auto">
-      {!isLoading && isError && <div>{error}</div>}
+      {!isLoading && isError && <div>{error.message}</div>}
 
       {isLoading && (
         <Spinner aria-label="Loading files...." className="block mx-auto" />
       )}
 
-      {!isLoading && !isError && (
+      {!isLoading && !isError && files && (
         <>
           <VaultBreadcrumb label={label} />
           <FilesTable files={files.filter(filter)} />

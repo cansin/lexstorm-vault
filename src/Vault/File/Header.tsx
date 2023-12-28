@@ -10,7 +10,7 @@ export default function FileHeader({ file }) {
       <div className="flex flex-row gap-4 items-center">
         <Link
           className="p-2 text-gray-900 bg-white border border-white hover:border-gray-200 hover:bg-gray-100 hover:text-cyan-700 rounded-full"
-          to={-1}
+          to={`/vault/folder/${file.parentUuid}`}
         >
           <PiX />
         </Link>

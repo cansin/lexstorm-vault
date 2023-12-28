@@ -9,7 +9,7 @@ export default function ParentFolderCell({ file }) {
         /{file.parentUuid}
         {!file.deleted && (
           <div className="invisible group-hover:visible">
-            <MoveButton file={file} />
+            <MoveButton />
           </div>
         )}
       </div>
