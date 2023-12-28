@@ -1,8 +1,6 @@
-import { Button, Sidebar } from "flowbite-react";
+import { Sidebar } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
 import { PiCaretDown, PiCaretRight, PiDotOutline } from "react-icons/pi";
-import { useState } from "react";
-import { act } from "react-dom/test-utils";
 
 import type FolderInterface from "../../../../common/Folder.interface";
 
