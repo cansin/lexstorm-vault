@@ -40,7 +40,7 @@ To set up the project locally:
 
 4. **Run the application:**
    ```
-   npm start
+   npm run dev
    ```
 
 ## Contributing
