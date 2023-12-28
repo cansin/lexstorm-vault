@@ -2,7 +2,7 @@ import { Sidebar } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
 import { PiCaretDown, PiCaretRight, PiDotOutline } from "react-icons/pi";
 
-import type FolderInterface from "../../../../common/Folder.interface";
+import type FolderInterface from "../../../../../../common/Folder.interface";
 
 import SidebarCollapse from "./Collapse";
 
@@ -19,7 +19,7 @@ const indentations = {
 interface FolderProps {
   folder: FolderInterface;
   indent: number;
-  onClick: () => void;
+  onClick: (folder: FolderInterface) => void;
 }
 
 export default function Folder({ folder, indent, onClick }: FolderProps) {
@@ -52,7 +52,6 @@ export default function Folder({ folder, indent, onClick }: FolderProps) {
         .map((child) => (
           <Folder
             indent={indent + 1}
-            parentUuid={folder.uuid}
             key={child.uuid}
             folder={child}
             onClick={onClick}
