@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ref, update } from "firebase/database";
 
-import { database } from "../../../../../../common/firebase";
-import { queryKeyFn as allFoldersQueryKeyFn } from "../../../../Layout/Navigation/useAllFolders";
-import { queryKeyFn as allFilesQueryKeyFn } from "../../../../../Vault/useAllFiles";
-import { queryKeyFn as folderQueryKeyFn } from "../../../../../Folder/useFolder";
+import { database } from "@/common/firebase";
+import { allFilesKey, allFoldersKey, folderKey } from "@/common/queryKeys";
 
 export default function useRenameFile({
   file: { parentUuid, uuid, isFolder },
@@ -20,11 +18,11 @@ export default function useRenameFile({
       );
     },
     onSuccess() {
-      client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
-      client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });
+      client.invalidateQueries({ queryKey: allFilesKey() });
+      client.invalidateQueries({ queryKey: allFoldersKey() });
       if (parentUuid) {
         client.invalidateQueries({
-          queryKey: folderQueryKeyFn({ uuid: parentUuid }),
+          queryKey: folderKey({ uuid: parentUuid }),
         });
       }
     },

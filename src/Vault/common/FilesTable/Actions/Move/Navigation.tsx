@@ -1,6 +1,6 @@
 import { Sidebar, Spinner } from "flowbite-react";
 
-import useAllFolders from "../../../../Layout/Navigation/useAllFolders";
+import useAllFolders from "../../../useAllFolders";
 
 import Folder from "./Folder";
 

@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Flowbite } from "flowbite-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import App from "./common/App.tsx";
+import App from "./App.tsx";
 import "./index.css";
 import theme from "./theme";
 

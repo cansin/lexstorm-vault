@@ -1,16 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import {
+  child,
+  endAt,
   get,
+  orderByChild,
   query,
   ref,
-  orderByChild,
   startAt,
-  endAt,
-  child,
 } from "firebase/database";
 
-import { database } from "../../common/firebase";
-import buildFileList from "../../common/buildFileList";
+import { database } from "@/common/firebase";
+import buildFileList from "@/common/buildFileList";
+import { folderKey } from "@/common/queryKeys";
 
 async function fetchChildFiles({ uuid }) {
   return get(
@@ -54,13 +55,9 @@ async function fetchFolder({ uuid }) {
   };
 }
 
-export function queryKeyFn({ uuid }) {
-  return [`folder-${uuid}`];
-}
-
 export default function useFolder({ folder: { uuid } }) {
   const { data: folder, ...rest } = useQuery({
-    queryKey: queryKeyFn({ uuid }),
+    queryKey: folderKey({ uuid }),
     queryFn: () => fetchFolder({ uuid }),
   });
 

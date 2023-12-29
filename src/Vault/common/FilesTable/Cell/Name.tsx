@@ -3,11 +3,11 @@ import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
 import { PiFilePdf, PiFolder } from "react-icons/pi";
 
-import RenameFileButton from "./Actions/Rename/Button";
-import RenameFileForm from "./Actions/Rename/Form";
-import MoveButton from "./Actions/Move/Move";
-import DeleteButton from "./Actions/Delete/Delete";
-import useRenameFile from "./Actions/Rename/useRenameFile";
+import RenameFileButton from "../Actions/Rename/Button";
+import RenameFileForm from "../Actions/Rename/Form";
+import MoveButton from "../Actions/Move/Move";
+import DeleteButton from "../Actions/Delete/Delete";
+import useRenameFile from "../Actions/Rename/useRenameFile";
 
 export default function NameCell({ file, hideMoveButton }) {
   const { handleRenameFile, showRenameFileField, toggleRenameFileField } =

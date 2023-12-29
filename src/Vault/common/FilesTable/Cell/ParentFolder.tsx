@@ -1,6 +1,6 @@
 import { Table } from "flowbite-react";
 
-import MoveButton from "./Actions/Move/Move";
+import MoveButton from "../Actions/Move/Move";
 
 export default function ParentFolderCell({ file }) {
   return (

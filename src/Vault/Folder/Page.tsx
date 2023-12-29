@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 
 import FilesTable from "../common/FilesTable/FilesTable";
 
-import useFolder from "./useFolder";
 import FolderBreadcrumb from "./Breadcrumb";
+import useFolder from "./useFolder";
 
 export default function FolderPage() {
   const { "*": splat } = useParams();

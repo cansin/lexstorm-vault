@@ -1,7 +1,5 @@
 import { Navigate } from "react-router-dom";
 
-import FourOhFourPage from "../FourOhFour/Page";
-
 import VaultPage from "./Vault/Page";
 import Layout from "./common/Layout/Layout";
 import FolderPage from "./Folder/Page";
@@ -22,10 +20,6 @@ export default function getVaultRoutes() {
             {
               index: true,
               element: <Navigate to="all-files" replace={true} />,
-            },
-            {
-              path: "new-folder",
-              element: <FourOhFourPage />,
             },
             {
               path: "all-files",

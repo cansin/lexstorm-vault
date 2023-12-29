@@ -1,12 +1,13 @@
 import { Outlet, useParams } from "react-router-dom";
 import type { ReactNode } from "react";
 
-import CommonLayout from "../../../common/Layout/Layout";
-import CommonFooter from "../../../common/Layout/Footer/Footer";
-import CommonHeader from "../../../common/Layout/Header/Header";
 import ActionButtons from "../Actions/Actions";
 
 import Navigation from "./Navigation/Navigation";
+
+import CommonLayout from "@/common/Layout/Layout";
+import CommonFooter from "@/common/Layout/Footer/Footer";
+import CommonHeader from "@/common/Layout/Header/Header";
 
 interface LayoutProps {
   children?: ReactNode;

@@ -2,8 +2,8 @@ import { Spinner } from "flowbite-react";
 
 import FilesTable from "../common/FilesTable/FilesTable";
 
-import useAllFiles from "./useAllFiles";
 import VaultBreadcrumb from "./Breadcrumb";
+import useAllFiles from "./useAllFiles";
 
 export default function VaultPage({ label, filter }) {
   const { isLoading, isError, files, error } = useAllFiles();

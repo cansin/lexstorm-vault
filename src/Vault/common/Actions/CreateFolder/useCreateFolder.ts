@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ref, push, serverTimestamp } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { database } from "../../../../common/firebase";
-import { queryKeyFn as allFoldersQueryKeyFn } from "../../Layout/Navigation/useAllFolders";
+import { database } from "@/common/firebase";
+import { allFoldersKey } from "@/common/queryKeys";
 
 export default function useCreateFolder({ parent }) {
   const [showCreateFolderModal, setShowCreateFolderModal] = useState(false);
@@ -18,7 +18,7 @@ export default function useCreateFolder({ parent }) {
       });
     },
     onSuccess() {
-      client.invalidateQueries({ queryKey: allFoldersQueryKeyFn() });
+      client.invalidateQueries({ queryKey: allFoldersKey() });
     },
   });
 

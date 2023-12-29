@@ -2,9 +2,9 @@ import { Sidebar } from "flowbite-react";
 import { twMerge } from "tailwind-merge";
 import { PiCaretDown, PiCaretRight, PiDotOutline } from "react-icons/pi";
 
-import type FolderInterface from "../../../../../../common/Folder.interface";
-
 import SidebarCollapse from "./Collapse";
+
+import type FolderInterface from "@/common/Folder.interface";
 
 const indentations = {
   0: "pl-2",

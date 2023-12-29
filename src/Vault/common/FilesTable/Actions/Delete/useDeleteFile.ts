@@ -1,9 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ref, serverTimestamp, update } from "firebase/database";
 
-import { queryKeyFn as allFilesQueryKeyFn } from "../../../../../Vault/useAllFiles";
-import { queryKeyFn as folderQueryKeyFn } from "../../../../../Folder/useFolder";
-import { database } from "../../../../../../common/firebase";
+import { database } from "@/common/firebase";
+import { allFilesKey, folderKey } from "@/common/queryKeys";
 
 export default function useDeleteFile({
   file: { parentUuid, uuid, isFolder },
@@ -16,10 +15,10 @@ export default function useDeleteFile({
       });
     },
     onSuccess() {
-      client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
+      client.invalidateQueries({ queryKey: allFilesKey() });
       if (parentUuid) {
         client.invalidateQueries({
-          queryKey: folderQueryKeyFn({ uuid: parentUuid }),
+          queryKey: folderKey({ uuid: parentUuid }),
         });
       }
     },

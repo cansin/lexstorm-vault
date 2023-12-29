@@ -1,3 +1,6 @@
+import path from "path";
+import fs from "fs";
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { checker } from "vite-plugin-checker";
@@ -14,7 +17,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      src: "/src",
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   server: {

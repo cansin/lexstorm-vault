@@ -3,8 +3,9 @@ import { PiDatabase, PiTrash } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
+import useAllFolders from "../../useAllFolders";
+
 import Folder from "./Folder";
-import useAllFolders from "./useAllFolders";
 
 const theme: CustomFlowbiteTheme["sidebar"] = {
   item: {

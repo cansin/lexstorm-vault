@@ -2,10 +2,9 @@ import { useState } from "react";
 import { ref, push, serverTimestamp } from "firebase/database";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { database } from "../../../../common/firebase";
-import { queryKeyFn as allFilesQueryKeyFn } from "../../../Vault/useAllFiles";
-import { queryKeyFn as folderQueryKeyFn } from "../../../Folder/useFolder";
-import type FileInterface from "../../../../common/File.interface";
+import { database } from "@/common/firebase";
+import type FileInterface from "@/common/File.interface";
+import { allFilesKey, folderKey } from "@/common/queryKeys";
 
 export default function useUploadFile({ parent }) {
   const [showFilePickerModal, setShowFilePickerModal] = useState(false);
@@ -20,10 +19,10 @@ export default function useUploadFile({ parent }) {
       });
     },
     onSuccess() {
-      client.invalidateQueries({ queryKey: allFilesQueryKeyFn() });
+      client.invalidateQueries({ queryKey: allFilesKey() });
       if (parent) {
         client.invalidateQueries({
-          queryKey: folderQueryKeyFn(parent),
+          queryKey: folderKey(parent),
         });
       }
     },
