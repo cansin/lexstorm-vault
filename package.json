@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.14.6",
+    "@tanstack/react-query": "^5.18.0",
     "filestack-react": "^5.0.0",
     "firebase": "^10.7.1",
     "flowbite": "^2.2.1",
