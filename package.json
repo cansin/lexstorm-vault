@@ -12,7 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.14.6",
     "filestack-react": "^5.0.0",
-    "firebase": "^10.7.1",
+    "firebase": "^10.9.0",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
     "formik": "^2.4.5",
@@ -43,7 +43,7 @@
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3",
     "values.js": "^2.1.1",
-    "vite": "^5.0.8",
+    "vite": "^5.0.12",
     "vite-plugin-checker": "^0.6.2"
   }
 }
